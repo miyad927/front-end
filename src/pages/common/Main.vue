@@ -1,6 +1,9 @@
 <script setup>
-import { reactive } from "vue";
+import { reactive, onMounted } from "vue";
+import { useProductsRanking } from "../../stores/useProductsRanking";
 import Products from "../product/components/Product.vue";
+
+const productRankingStore = useProductsRanking();
 const ProductList = reactive([
   {
     id: 1,
@@ -57,6 +60,10 @@ const ProductList = reactive([
       "https://thenaum.cdn-nhncommerce.com/data/goods/15/01/26/1000000463/1000000463_magnify_07.jpg",
   },
 ]);
+
+onMounted(async () => {
+  await productRankingStore.fetchProducts();
+});
 </script>
 
 <template>
@@ -92,7 +99,11 @@ const ProductList = reactive([
         <div class="b_title">밀키트 베스트</div>
       </div>
       <div class="product-grid-6">
-        <Products v-for="product in ProductList" :product="product" />
+        <Products
+          v-for="product in productRankingStore.products"
+          :key="product.id"
+          :product="product"
+        />
       </div>
     </section>
   </div>

@@ -85,7 +85,7 @@
       <nav>
         <ul class="l_nav_wrap">
           <li class="first_nav gnb_all_btn" id="gnb_all_btn">카테고리</li>
-          <li><router-link to="/">맛집리스트</router-link></li>
+          <li><router-link to="/store">맛집리스트</router-link></li>
           <li class="last_nav">
             <router-link to="/">밀키트 상품</router-link>
           </li>

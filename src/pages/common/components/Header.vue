@@ -4,8 +4,8 @@
   <header>
     <div class="inner_wrap">
       <div class="top_login">
-        <div><router-link to="/">로그인</router-link></div>
-        <div><router-link to="/">회원가입</router-link></div>
+        <div><router-link to="/login">로그인</router-link></div>
+        <div><router-link to="/join">회원가입</router-link></div>
         <div><router-link to="/">주문조회</router-link></div>
         <div><router-link to="/">마이페이지</router-link></div>
       </div>

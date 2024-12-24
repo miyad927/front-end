@@ -1,68 +1,18 @@
 <script setup>
 import { reactive, onMounted } from "vue";
-import { useProductsRanking } from "../../stores/useProductsRanking";
+import { useProductsStore } from "../../stores/useProductsStore";
+import { useStoresStore } from "../../stores/useStoresStore";
 import Products from "../product/components/Product.vue";
+import StoreCard from "../store/components/StoreCard.vue";
 
-const productRankingStore = useProductsRanking();
-const ProductList = reactive([
-  {
-    id: 1,
-    name: "고객후기1위! 옛날 국물떡볶이 570g 1",
-    starPoint: 4.9,
-    reviewCnt: 2718,
-    price: 7980,
-    imgPath:
-      "https://thenaum.cdn-nhncommerce.com/data/goods/14/06/04/1000000307/1000000307_magnify_079.jpg",
-  },
-  {
-    id: 2,
-    name: "고객후기1위! 옛날 국물떡볶이 570g 2",
-    starPoint: 4.9,
-    reviewCnt: 2718,
-    price: 7980,
-    imgPath:
-      "https://thenaum.cdn-nhncommerce.com/data/goods/19/05/21/1000002179/1000002179_add3_045.jpg",
-  },
-  {
-    id: 3,
-    name: "고객후기1위! 옛날 국물떡볶이 570g 3",
-    starPoint: 4.9,
-    reviewCnt: 2718,
-    price: 7980,
-    imgPath:
-      "https://thenaum.cdn-nhncommerce.com/data/goods/16/01/14/1000000838/1000000838_magnify_010.jpg",
-  },
-  {
-    id: 4,
-    name: "고객후기1위! 옛날 국물떡볶이 570g 4",
-    starPoint: 4.9,
-    reviewCnt: 2718,
-    price: 7980,
-    imgPath:
-      "https://thenaum.cdn-nhncommerce.com/data/goods/19/03/10/1000002060/1000002060_magnify_012.jpg",
-  },
-  {
-    id: 5,
-    name: "고객후기1위! 옛날 국물떡볶이 570g 5",
-    starPoint: 4.9,
-    reviewCnt: 2718,
-    price: 7980,
-    imgPath:
-      "https://thenaum.cdn-nhncommerce.com/data/goods/14/06/04/1000000303/1000000303_magnify_07.jpg",
-  },
-  {
-    id: 6,
-    name: "고객후기1위! 옛날 국물떡볶이 570g 6",
-    starPoint: 4.9,
-    reviewCnt: 2718,
-    price: 7980,
-    imgPath:
-      "https://thenaum.cdn-nhncommerce.com/data/goods/15/01/26/1000000463/1000000463_magnify_07.jpg",
-  },
-]);
+const storesStore = useStoresStore();
+const productStore = useProductsStore();
 
 onMounted(async () => {
-  await productRankingStore.fetchProducts();
+  await storesStore.getStoreBestList();
+});
+onMounted(async () => {
+  await productStore.getProductBestList();
 });
 </script>
 
@@ -88,7 +38,11 @@ onMounted(async () => {
           </ul>
         </div>
         <div class="product-grid-6">
-          <Products v-for="product in ProductList" :product="product" />
+          <StoreCard
+            v-for="store of storesStore.stores"
+            :key="store.id"
+            :store="store"
+          />
         </div>
       </div>
     </section>
@@ -100,7 +54,7 @@ onMounted(async () => {
       </div>
       <div class="product-grid-6">
         <Products
-          v-for="product in productRankingStore.products"
+          v-for="product of productStore.products"
           :key="product.id"
           :product="product"
         />

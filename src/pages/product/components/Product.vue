@@ -1,12 +1,10 @@
 <script setup>
-import {} from "vue";
-
-const props = {
+const props = defineProps({
   product: {
     type: Object,
     required: true,
   },
-};
+});
 </script>
 <template>
   <div class="list">

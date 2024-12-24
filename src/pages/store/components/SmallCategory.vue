@@ -46,7 +46,7 @@ onUpdated(async () => {
 </script>
 
 <template>
-  <ul v-if="!loadingStore.isLoading" class="small_category_list">
+  <ul class="small_category_list">
     <li
       class="small_category"
       :class="{ picked: smallCate.idx === 0 }"

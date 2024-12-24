@@ -26,7 +26,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <ul v-if="!loadingStore.isLoading" class="category_list">
+  <ul class="category_list">
     <li
       class="big_category"
       :class="{ picked: bigCate.idx === 0 }"

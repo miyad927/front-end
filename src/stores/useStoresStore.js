@@ -10,10 +10,10 @@ export const useStoresStore = defineStore("stores", {
     async getStoreList() {
       await axios
         .get(
-          "https://6b780f16-632b-4655-9324-f7b16531d032.mock.pstmn.io/store",
+          "https://2deee6c7-ce64-440b-80cd-b66969cb5b6e.mock.pstmn.io/store",
           {
             sort: "HOT",
-          },
+          }
         )
         .then((response) => {
           this.stores = response.data.stores;

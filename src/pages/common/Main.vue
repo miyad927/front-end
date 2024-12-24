@@ -43,6 +43,11 @@ onMounted(async () => {
             :key="store.id"
             :store="store"
           />
+          <Products
+            v-for="(product, index) in ProductList"
+            :product="product"
+            :index="index"
+          />
         </div>
       </div>
     </section>

@@ -4,11 +4,15 @@ const props = defineProps({
     type: Object,
     required: true,
   },
+  index: {
+    type: BigInt,
+    required: true,
+  },
 });
 </script>
 <template>
   <div class="list">
-    <router-link to="/" class="img_box">
+    <router-link :to="`/products/${product.id}`" class="img_box">
       <img :src="`${product.imgPath}`" />
     </router-link>
     <div class="info_box">

@@ -1,22 +1,23 @@
 <script setup>
 import { onMounted } from "vue";
 import { useStoresStore } from "../../stores/useStoresStore";
-import Category from "./components/Category.vue";
 import OrderBox from "./components/OrderBox.vue";
 import StoreCard from "./components/StoreCard.vue";
+import BigCategory from "./components/BigCategory.vue";
+import SmallCategory from "./components/SmallCategory.vue";
 
 const storesStore = useStoresStore();
 
-onMounted(async () => { 
+onMounted(async () => {
   await storesStore.getStoreList();
-})
-
+});
 </script>
 
 <template>
   <div class="main">
     <h1>맛집 리스트</h1>
-    <Category />
+    <BigCategory />
+    <SmallCategory />
     <OrderBox />
     <div class="store_list">
       <StoreCard

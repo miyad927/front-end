@@ -1,17 +1,7 @@
 <script setup>
-import { onMounted, onUpdated, reactive } from "vue";
+import { onMounted, reactive, watch } from "vue";
 import { useCategoryStore } from "../../../stores/useCategoryStore";
-import { useLoadingStore } from "../../../stores/useLoadingStore";
 
-const props = defineProps({
-  bigCateIdx: {
-    type: Number,
-    required: true,
-  },
-});
-
-let bigCate = props.bigCateIdx;
-const loadingStore = useLoadingStore();
 const categoryStore = useCategoryStore();
 
 const smallCate = reactive({
@@ -20,28 +10,23 @@ const smallCate = reactive({
 });
 
 const changeSmallCate = (cate) => {
-  smallCate.idx = cate.idx;
-  smallCate.name = cate.name;
+  smallCate = cate;
 };
 
-// Big Category 바뀔 때마다 Small Category 업데이트
 const getSmallCategoryList = async () => {
-  loadingStore.startLoading();
-  await categoryStore.getSmallCategory(props.bigCateIdx);
-  loadingStore.stopLoading();
-
-  bigCate = props.bigCateIdx;
+  await categoryStore.getSmallCategory(categoryStore.bigCate.idx);
 };
+
+// Big Category가 변경될 때 처리
+watch(
+  () => categoryStore.bigCate,
+  async () => {
+    await getSmallCategoryList();
+  }
+);
 
 onMounted(async () => {
   await getSmallCategoryList();
-});
-
-// bigCateIdx가 업데이트 될 때 처리
-onUpdated(async () => {
-  if (bigCate !== props.bigCateIdx) {
-    await getSmallCategoryList();
-  }
 });
 </script>
 
@@ -69,7 +54,7 @@ onUpdated(async () => {
 <style scoped>
 .small_category_list {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   margin-bottom: 2.5rem;
   border: 1px solid #c6c6c6;
 }

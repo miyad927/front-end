@@ -5,12 +5,18 @@ export const useCategoryStore = defineStore("category", {
   state: () => ({
     bigCategory: [],
     smallCategory: [],
+    bigCate: {
+      idx: 0,
+      name: "전체",
+    },
   }),
 
   actions: {
     async getBigCategory() {
       await axios
-        .get("https://run.mocky.io/v3/b9e6d81e-421e-47bf-a7cf-e5d38008fdd2")
+        .get(
+          "https://2deee6c7-ce64-440b-80cd-b66969cb5b6e.mock.pstmn.io/category/big"
+        )
         .then((response) => {
           this.bigCategory = response.data.category;
           return response.data.category;
@@ -20,9 +26,14 @@ export const useCategoryStore = defineStore("category", {
         });
     },
 
-    async getSmallCategory(ref_id = 1) {
+    async getSmallCategory(refId = 1) {
       await axios
-        .get(`https://run.mocky.io/v3/d346a78c-dd79-47fd-affa-f03a9c541681`)
+        .get(
+          "https://2deee6c7-ce64-440b-80cd-b66969cb5b6e.mock.pstmn.io/category/small",
+          {
+            ref_id: refId,
+          }
+        )
         .then((response) => {
           this.smallCategory = response.data.category;
           return response.data.category;
@@ -30,6 +41,10 @@ export const useCategoryStore = defineStore("category", {
         .catch((error) => {
           console.error("Error fetching data:", error);
         });
+    },
+
+    setBigCate(cate) {
+      this.bigCate = cate;
     },
   },
 });

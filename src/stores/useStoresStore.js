@@ -10,16 +10,9 @@ export const useStoresStore = defineStore("stores", {
     async getStoreList() {
       await axios
         .get(
-          "https://run.mocky.io/v3/1ac410a9-28c4-49aa-9e78-91f0781e7e61",
+          "https://2deee6c7-ce64-440b-80cd-b66969cb5b6e.mock.pstmn.io/store",
           {
             sort: "HOT",
-            place: "서울",
-            category: 1,
-          },
-          {
-            headers: {
-              "Content-Type": "application/json",
-            },
           }
         )
         .then((response) => {

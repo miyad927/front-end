@@ -1,35 +1,23 @@
 <script setup>
-import { reactive, onMounted } from "vue";
+import { onMounted } from "vue";
 import { useCategoryStore } from "../../../stores/useCategoryStore";
-import { useLoadingStore } from "../../../stores/useLoadingStore";
 
-const loadingStore = useLoadingStore();
 const categoryStore = useCategoryStore();
-const emit = defineEmits(["big-cate"]);
 
-const bigCate = reactive({
-  idx: 0,
-  name: "전체",
-});
 const changeBigCate = (cate) => {
-  bigCate.idx = cate.idx;
-  bigCate.name = cate.name;
-
-  emit("big-cate", cate.idx);
+  categoryStore.setBigCate(cate);
 };
 
 onMounted(async () => {
-  loadingStore.startLoading();
   await categoryStore.getBigCategory();
-  loadingStore.stopLoading();
 });
 </script>
 
 <template>
-  <ul v-if="!loadingStore.isLoading" class="category_list">
+  <ul class="category_list">
     <li
       class="big_category"
-      :class="{ picked: bigCate.idx === 0 }"
+      :class="{ picked: categoryStore.bigCate.idx === 0 }"
       @click="changeBigCate({ idx: 0, name: '전체' })"
     >
       전체
@@ -39,7 +27,7 @@ onMounted(async () => {
       v-for="cate in categoryStore.bigCategory"
       :key="cate.idx"
       class="big_category"
-      :class="{ picked: bigCate.idx === cate.idx }"
+      :class="{ picked: categoryStore.bigCate.idx === cate.idx }"
       @click="changeBigCate(cate)"
     >
       {{ cate.name }}
@@ -50,7 +38,7 @@ onMounted(async () => {
 <style scoped>
 .category_list {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(8, 1fr);
   border-bottom: 1px solid #cecece;
   margin-bottom: 1.25rem;
   box-sizing: border-box;

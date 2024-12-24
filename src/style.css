@@ -429,4 +429,8 @@ input[type="submit"] {
   .util_menu {
     display: none;
   }
+
+  .main {
+    min-width: unset;
+  }
 }

@@ -104,9 +104,9 @@
 
 .location_cont em {
   display: inline-block;
-  padding: 0.75rem 0 0.625rem 0;
+  padding: 12px 0 10px 0;
   color: #777777;
-  font-size: 0.7813rem;
+  font-size: 12.5008px;
 }
 
 .location_cont .local_home {
@@ -120,42 +120,42 @@
 }
 .main {
   width: 50%;
-  min-width: 37.5rem;
+  min-width: 600px;
   margin: 0 auto;
 }
 .container {
-  margin-bottom: 3.125rem;
+  margin-bottom: 50px;
 }
 .content_wrap {
-  width: 46.875rem;
+  width: 750px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
 }
 
 .content_wrap .member_wrap {
-  width: 25.6875rem;
+  width: 411px;
   flex-shrink: 0;
   margin: 0;
 }
 
 .content_wrap .member_wrap .member_tit h2 {
-  font-size: 1.625rem;
-  line-height: 1.625rem;
+  font-size: 26px;
+  line-height: 26px;
   letter-spacing: -0.05em;
   font-weight: 500;
 }
 
 .content_wrap .member_wrap .join_tit {
-  margin: 1.25rem 0 0 0;
-  font-size: 0.9375rem;
-  line-height: 1.375rem;
+  margin: 20px 0 0 0;
+  font-size: 15px;
+  line-height: 22px;
   letter-spacing: -0.05em;
   color: #777;
 }
 
 .content_wrap .member_wrap .member_cont {
-  padding: 1.875rem 0;
+  padding: 30px 0;
   border: none;
 }
 
@@ -166,14 +166,14 @@
 
 .content_wrap .member_wrap .member_cont .member_login_box a {
   flex-grow: 1;
-  height: 4.0625rem;
-  padding: 0 1.5625rem;
-  border-radius: 0.75rem;
-  border: 0.0625rem solid #e8e8e8;
+  height: 65px;
+  padding: 0 25px;
+  border-radius: 12px;
+  border: 1px solid #e8e8e8;
   display: flex;
   align-items: center;
-  font-size: 0.9375rem;
-  line-height: 0.9375rem;
+  font-size: 15px;
+  line-height: 15px;
   letter-spacing: -0.05em;
   color: #555;
   justify-content: space-between;
@@ -185,20 +185,20 @@
 }
 
 .content_wrap .member_wrap .member_cont .member_login_box a .left img {
-  margin: 0 0.75rem 0 0;
-  width: 2.1875rem;
+  margin: 0 12px 0 0;
+  width: 35px;
 }
 
 .content_wrap .member_wrap .member_cont .member_login_box a {
-  font-size: 0.9375rem;
-  line-height: 0.9375rem;
+  font-size: 15px;
+  line-height: 15px;
   letter-spacing: -0.05em;
   color: #555;
 }
 
 .content_wrap .member_wrap .member_cont .member_login_box a .right_arrow {
-  width: 0.375rem;
-  height: 0.6875rem;
+  width: 6px;
+  height: 11px;
   opacity: 0.2;
 }
 
@@ -207,6 +207,13 @@
   .member_cont
   .member_login_box
   > *:not(:first-child) {
-  margin: 0.75rem 0 0 0;
+  margin: 12px 0 0 0;
+}
+
+@media (max-width: 960px) {
+  .main {
+    min-width: 25rem;
+    max-width: 35rem;
+  }
 }
 </style>

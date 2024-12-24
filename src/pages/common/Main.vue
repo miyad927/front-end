@@ -1,12 +1,18 @@
 <script setup>
 import { reactive, onMounted } from "vue";
 import { useProductsStore } from "../../stores/useProductsStore";
+import { useStoresStore } from "../../stores/useStoresStore";
 import Products from "../product/components/Product.vue";
+import StoreCard from "../store/components/StoreCard.vue";
 
+const storesStore = useStoresStore();
 const productStore = useProductsStore();
 
 onMounted(async () => {
-  await productStore.fetchProducts();
+  await storesStore.getStoreBestList();
+});
+onMounted(async () => {
+  await productStore.getProductBestList();
 });
 </script>
 
@@ -32,10 +38,10 @@ onMounted(async () => {
           </ul>
         </div>
         <div class="product-grid-6">
-          <Products
-            v-for="product in productStore.products"
-            :key="product.id"
-            :product="product"
+          <StoreCard
+            v-for="store of storesStore.stores"
+            :key="store.id"
+            :store="store"
           />
         </div>
       </div>
@@ -48,7 +54,7 @@ onMounted(async () => {
       </div>
       <div class="product-grid-6">
         <Products
-          v-for="product in productStore.products"
+          v-for="product of productStore.products"
           :key="product.id"
           :product="product"
         />

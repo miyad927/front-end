@@ -1,7 +1,6 @@
 <script setup>
 import { ref } from "vue";
 import { useReservationStore } from "../../../stores/useReservationStore";
-
 const timeList = ref(["17:00", "17:30", "18:00", "18:30", "19:00"]);
 
 const rsvData = ref({
@@ -11,6 +10,12 @@ const rsvData = ref({
   headCount: 1,
   request: "",
 });
+
+// 오늘 이전 날짜 비활성화화
+const yesterday = new Date();
+yesterday.setDate(yesterday.getDate() - 1);
+const disabledDates = ref([{ start: null, end: yesterday }]);
+
 
 const reservationStore = useReservationStore();
 
@@ -29,6 +34,8 @@ const decreaseHeadCount = () => {
     rsvData.value.headCount--;
   }
 };
+
+
 const reservation = async () => {
   console.log(rsvData.value)
   const result = await reservationStore.reservation(rsvData.value);
@@ -50,6 +57,7 @@ const reservation = async () => {
       <div class="side_calendar">
         <VDatePicker
           v-model="rsvData.date"
+          :disabled-dates="disabledDates"
           mode="date"
           class="v-calendar"
           borderless
@@ -340,5 +348,28 @@ const reservation = async () => {
 
 .v-calendar .vc-blue {
   --vc-accent-600: #ff7400;
+}
+
+.vc-weekdays {
+  border-radius: 1rem;
+  background-color: #F6F1EC;
+  margin: 0.3rem 0;
+}
+
+
+.vc-weekdays > .vc-weekday {
+  font-size: 0.8rem;
+  color: #1a1a1a;
+  font-family: "Pretendard", sans-serif;
+  padding-top: 0.5rem;
+}
+
+.vc-day.weekday-1 {
+  color: #ff322e;
+}
+
+.vc-day > .vc-day-content {
+  font-size: 0.8rem;
+    font-family: "Pretendard", sans-serif;
 }
 </style>

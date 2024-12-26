@@ -6,6 +6,7 @@ import ReservationBox from "./components/ReservationBox.vue";
 import StoreDescription from "./components/StoreDescription.vue";
 import StoreMenuList from "./components/StoreMenuList.vue";
 import StoreReviewList from "./components/StoreReviewList.vue";
+import ImgCarousel from "./components/ImgCarousel.vue";
 
 const storeData = ref({
   name: "",
@@ -20,7 +21,8 @@ const storeData = ref({
   closed_day: "",
   starPoint: 0.0,
   reviewCnt: 0,
-  menu: [],
+  menus: [],
+  images: [],
 });
 
 const route = useRoute();
@@ -42,10 +44,7 @@ onMounted(async () => {
   <div class="main">
     <section class="store">
       <div class="store_info">
-        <img
-          src="https://d12zq4w4guyljn.cloudfront.net/750_750_20241123105001_photo1_394db3cb2fa0.jpg"
-          alt="식당 대표 사진"
-        />
+        <ImgCarousel :images="storeData.images" />
 
         <div class="title_grade_box">
           <div class="title_box">
@@ -123,7 +122,7 @@ onMounted(async () => {
       />
       <StoreMenuList
         v-if="storesStore.storeTab === 'menu'"
-        :menu="storeData.menu"
+        :menu="storeData.menus"
       />
       <StoreReviewList v-if="storesStore.storeTab === 'review'" />
     </section>
@@ -237,9 +236,10 @@ onMounted(async () => {
 
 .info_list > span {
   color: #1a1a1a;
+  font-size: 0.9rem;
 }
 
-/* 목록 선택 */
+/* 탭 선택 */
 .store_tab_list {
   width: 100%;
   height: 2.5rem;
@@ -259,6 +259,7 @@ onMounted(async () => {
   justify-content: center;
   align-items: center;
   box-sizing: content-box;
+  font-size: 1rem;
 }
 
 .store_tab_item:active,

@@ -3,26 +3,22 @@ import { defineStore } from "pinia";
 
 export const useStoresStore = defineStore("stores", {
   state: () => ({
-    stores: [],
+    storeTab: "description",
   }),
 
   actions: {
-    async getStoreList() {
-      await axios
+    async getStoreList(filter) {
+      const response = await axios
         .get(
           "https://2deee6c7-ce64-440b-80cd-b66969cb5b6e.mock.pstmn.io/store",
-          {
-            sort: "HOT",
-          }
+          filter
         )
-        .then((response) => {
-          this.stores = response.data.stores;
-          return response.data.stores;
-        })
         .catch((error) => {
           console.error("Error fetching data:", error);
         });
+      return response.data;
     },
+
     async getStoreBestList() {
       await axios
         .get(
@@ -39,12 +35,26 @@ export const useStoresStore = defineStore("stores", {
           }
         )
         .then((response) => {
-          this.stores = response.data.stores;
           return response.data.stores;
         })
         .catch((error) => {
           console.error("Error fetching data:", error);
         });
+    },
+
+    async getStoreDetail(storeId) {
+      const response = await axios
+        .get(
+          `https://2deee6c7-ce64-440b-80cd-b66969cb5b6e.mock.pstmn.io/store/${storeId}`
+        )
+        .catch((error) => {
+          console.error("getStoreDetail api error", error);
+        });
+      return response.data;
+    },
+
+    setStoreTab(tab) {
+      this.storeTab = tab;
     },
   },
 });

@@ -1,15 +1,23 @@
 <script setup>
-import { onMounted } from "vue";
+import { onMounted, reactive, ref } from "vue";
 import { useStoresStore } from "../../stores/useStoresStore";
 import OrderBox from "./components/OrderBox.vue";
 import StoreCard from "./components/StoreCard.vue";
 import BigCategory from "./components/BigCategory.vue";
 import SmallCategory from "./components/SmallCategory.vue";
 
+const filter = reactive({
+  sort: "HOT",
+  place: "서울",
+  category: 1
+});
+const storeList = ref([]);
+
 const storesStore = useStoresStore();
 
 onMounted(async () => {
-  await storesStore.getStoreList();
+  const result = await storesStore.getStoreList(filter);
+  storeList.value = result.stores;
 });
 </script>
 
@@ -20,11 +28,7 @@ onMounted(async () => {
     <SmallCategory />
     <OrderBox />
     <div class="store_list">
-      <StoreCard
-        v-for="store of storesStore.stores"
-        :key="store.id"
-        :store="store"
-      />
+      <StoreCard v-for="store of storeList" :key="store.id" :store="store" />
     </div>
   </div>
 </template>

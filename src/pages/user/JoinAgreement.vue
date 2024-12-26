@@ -30,7 +30,7 @@ const btnNextStep = () => {
         </ol>
       </div>
       <div class="member_tit2">
-        <p><span class="txt_mainco">푸딩팩토리</span> 약관동의</p>
+        <p><span class="txt_mainco">Eatzzy</span> 약관동의</p>
       </div>
       <div class="member_cont">
         <div class="join_agreement_cont">
@@ -40,8 +40,7 @@ const btnNextStep = () => {
                 <input type="checkbox" id="allAgree" />
                 <label class="check" for="allAgree">
                   <em
-                    >푸딩팩토리의 모든 약관을 확인하고 전체
-                    동의합니다.&nbsp;</em
+                    >Eatzzy의 모든 약관을 확인하고 전체 동의합니다.&nbsp;</em
                   ></label
                 >
                 <span>(필수항목, 선택항목도 포함됩니다.)</span>
@@ -177,11 +176,11 @@ const btnNextStep = () => {
                       <div class="sec_box">
                         <ol class="sec_txt">
                           <li>
-                            이 약관은 주식회사 더나음(전자상거래 사업자)가
-                            운영하는 푸딩팩토리(이하 “몰”이라 한다)에서 제공하는
-                            인터넷 관련 서비스(이하 “서비스”라 한다)를 이용함에
-                            있어 사이버 몰과 이용자의 권리․의무 및 책임사항을
-                            규정함을 목적으로 합니다.
+                            이 약관은 Eatzzy(전자상거래 사업자)가 운영하는
+                            Eatzzy(이하 “몰”이라 한다)에서 제공하는 인터넷 관련
+                            서비스(이하 “서비스”라 한다)를 이용함에 있어 사이버
+                            몰과 이용자의 권리․의무 및 책임사항을 규정함을
+                            목적으로 합니다.
                           </li>
                           <li>
                             ※「PC통신, 무선 등을 이용하는 전자상거래에 대해서도
@@ -1059,8 +1058,8 @@ const btnNextStep = () => {
                             결제수단으로 사용할 수 있으며 ‘더나음’은 적립금의
                             적립기준, 사용방법, 사용기간 및 제한에 대한 사항을
                             사이트에 별도로 게시하거나 통지합니다. 적립금의
-                            사용조건에 관한 사항은 ‘더나음(푸딩팩토리)’ 의
-                            정책에 따라 달라질 수 있습니다.
+                            사용조건에 관한 사항은 ‘Eatzzy’ 의 정책에 따라
+                            달라질 수 있습니다.
                           </li>
                           <li>
                             회원은 적립금을 제3자에게 또는 다른 아이디로 양도할
@@ -1263,9 +1262,9 @@ const btnNextStep = () => {
                   >
                 </div>
                 <div class="agreement_box" id="consignment_sales_box">
-                  푸딩팩토리 사업자회원은 실제 매장을 운영하시거나 대량의
-                  식자재를 필요로 하시는 사업자 분들께서 오프라인 매장에서
-                  사용하실 수 있도록 도매가를 제공하고 있습니다.<br /><br />
+                  Eatzzy 사업자회원은 실제 매장을 운영하시거나 대량의 식자재를
+                  필요로 하시는 사업자 분들께서 오프라인 매장에서 사용하실 수
+                  있도록 도매가를 제공하고 있습니다.<br /><br />
                   온라인 재판매의 경우 제품의 안전성을 보장 할 수 없기 때문에
                   온라인 판매 및 이미지 사용은 제한합니다.
                 </div>

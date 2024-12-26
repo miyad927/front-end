@@ -8,7 +8,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <router-link :to="`/store/${store.idx}`" class="store_item">
+  <router-link :to="`/stores/${store.idx}`" class="store_item">
     <img
       class="store_img"
       src="https://d12zq4w4guyljn.cloudfront.net/750_750_20241123105001_photo1_394db3cb2fa0.jpg"

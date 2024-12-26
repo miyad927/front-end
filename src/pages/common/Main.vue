@@ -2,11 +2,15 @@
 import { reactive, onMounted } from "vue";
 import { useProductsStore } from "../../stores/useProductsStore";
 import { useStoresStore } from "../../stores/useStoresStore";
+import { useCategoryStore } from "../../stores/useCategoryStore";
+
 import Products from "../product/components/Product.vue";
 import StoreCard from "../store/components/StoreCard.vue";
+import BigCategory from "../store/components/BigCategory.vue";
 
 const storesStore = useStoresStore();
 const productStore = useProductsStore();
+const categoryStore = useCategoryStore();
 
 onMounted(async () => {
   await storesStore.getStoreBestList();
@@ -26,20 +30,16 @@ onMounted(async () => {
         <div class="b_title">카테고리별 베스트</div>
       </div>
       <div class="best_goods_wrap">
-        <div class="food_category_list">
-          <ul>
-            <li class="goodsCateList goodsActive">전체</li>
-            <li class="goodsCateList">한식</li>
-            <li class="goodsCateList">중식</li>
-            <li class="goodsCateList">일식</li>
-            <li class="goodsCateList">분식</li>
-            <li class="goodsCateList">아시아</li>
-            <li class="goodsCateList">패스트푸드</li>
-          </ul>
-        </div>
+        <BigCategory />
         <div class="product-grid-6">
           <StoreCard
-            v-for="store of storesStore.stores"
+            v-for="store in categoryStore.bigCate.name === '전체'
+              ? storesStore.stores.slice(0, 6)
+              : storesStore.stores
+                  .filter(
+                    (store) => store.category === categoryStore.bigCate.name
+                  )
+                  .slice(0, 6)"
             :key="store.id"
             :store="store"
           />
@@ -54,7 +54,7 @@ onMounted(async () => {
       </div>
       <div class="product-grid-6">
         <Products
-          v-for="product of productStore.products"
+          v-for="product of productStore.productsBest"
           :key="product.id"
           :product="product"
         />
@@ -107,43 +107,6 @@ section:not(:last-child) {
 .best_goods_wrap {
   width: 100%;
   margin: 0 auto;
-}
-.food_category_list {
-  max-width: 78.75rem;
-  overflow-y: hidden;
-  overflow-x: auto;
-  margin: 0 0 3.125rem 0;
-}
-.food_category_list ul {
-  height: 3.5rem;
-  display: flex;
-  border-bottom: 0.0625rem solid #cecece;
-}
-.food_category_list ul li {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex: 1;
-  cursor: pointer;
-  font-size: 1.25rem;
-  font-weight: 500;
-  letter-spacing: -0.05em;
-  color: #666970;
-  position: relative;
-  word-break: keep-all;
-}
-.food_category_list ul li.goodsActive {
-  font-weight: 700;
-  color: #ff7400;
-}
-.food_category_list ul li.goodsActive:after {
-  content: "";
-  width: 100%;
-  height: 0.125rem;
-  position: absolute;
-  bottom: -0.0625rem;
-  left: 0;
-  background: #ff7400;
 }
 
 .product-grid-6 {
@@ -202,12 +165,6 @@ section:not(:last-child) {
   .product-grid-6 {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 500px) {
-  .food_category_list ul li {
-    min-width: 100px;
   }
 }
 </style>

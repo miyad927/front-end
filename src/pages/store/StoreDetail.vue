@@ -88,6 +88,10 @@ onMounted(async () => {
         </div>
       </div>
 
+      <div class="mobile_reservation">
+        <ReservationBox />
+      </div>
+
       <ul class="store_tab_list">
         <li
           class="store_tab_item"
@@ -275,6 +279,10 @@ onMounted(async () => {
   flex-direction: column;
 }
 
+.mobile_reservation {
+  display: none;
+}
+
 @media (max-width: 960px) {
   .main {
     min-width: auto;
@@ -290,6 +298,9 @@ onMounted(async () => {
   }
   .reservation {
     display: none;
+  }
+  .mobile_reservation {
+    display: block;
   }
   .store_tab_list {
     margin-top: 4rem;

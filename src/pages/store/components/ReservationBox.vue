@@ -11,11 +11,10 @@ const rsvData = ref({
   request: "",
 });
 
-// 오늘 이전 날짜 비활성화화
+// 오늘 이전 날짜 비활성화
 const yesterday = new Date();
 yesterday.setDate(yesterday.getDate() - 1);
 const disabledDates = ref([{ start: null, end: yesterday }]);
-
 
 const reservationStore = useReservationStore();
 
@@ -35,14 +34,13 @@ const decreaseHeadCount = () => {
   }
 };
 
-
 const reservation = async () => {
-  console.log(rsvData.value)
+  console.log(rsvData.value);
   const result = await reservationStore.reservation(rsvData.value);
-  
+
   console.log(result);
-  if (result.status === 200) { 
-    console.log('예약 성공')
+  if (result.status === 200) {
+    console.log("예약 성공");
   }
 };
 </script>
@@ -331,6 +329,33 @@ const reservation = async () => {
 .side_button:hover {
   background-color: #c96208;
 }
+
+@media (max-width: 960px) {
+  .side_container {
+    min-width: 25rem;
+    max-width: 35rem;
+    margin: 0 auto;
+  }
+
+  .side_calendar {
+    display: flex;
+    justify-content: center;
+  }
+
+  .side_time {
+    grid-template-columns: repeat(4, 1fr);
+    margin: 0 auto;
+    height: 6rem;
+    max-width: 25rem;
+    padding: 0.3rem 1rem;
+  }
+
+  .side_write {
+    max-width: 25rem;
+    margin: 0 auto;
+    padding: 0.3rem 1rem;
+  }
+}
 </style>
 
 <style>
@@ -352,10 +377,9 @@ const reservation = async () => {
 
 .vc-weekdays {
   border-radius: 1rem;
-  background-color: #F6F1EC;
+  background-color: #f6f1ec;
   margin: 0.3rem 0;
 }
-
 
 .vc-weekdays > .vc-weekday {
   font-size: 0.8rem;
@@ -370,6 +394,6 @@ const reservation = async () => {
 
 .vc-day > .vc-day-content {
   font-size: 0.8rem;
-    font-family: "Pretendard", sans-serif;
+  font-family: "Pretendard", sans-serif;
 }
 </style>

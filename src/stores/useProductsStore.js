@@ -10,7 +10,7 @@ export const useProductsStore = defineStore("products", {
       const response = await axios.get(
         "https://1846f82f-744f-4069-b790-aea1f893e984.mock.pstmn.io/productBest"
       );
-      this.products = response.data;
+      this.productsBest = response.data;
     },
   },
 });

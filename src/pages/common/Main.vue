@@ -59,7 +59,7 @@ onMounted(async () => {
       </div>
       <div class="product-grid-6">
         <Products
-          v-for="product of productStore.products"
+          v-for="product of productStore.productBest"
           :key="product.id"
           :product="product"
         />

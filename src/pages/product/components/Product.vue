@@ -1,11 +1,8 @@
 <script setup>
+import { defineProps } from "vue";
 const props = defineProps({
   product: {
     type: Object,
-    required: true,
-  },
-  index: {
-    type: BigInt,
     required: true,
   },
 });

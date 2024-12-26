@@ -8,6 +8,7 @@ import Join from "../pages/user/Join.vue";
 import JoinAgreement from "../pages/user/JoinAgreement.vue";
 import ProductDetail from "../pages/product/components/ProductDetail.vue";
 import JoinForm from "../pages/user/JoinForm.vue";
+import Products from "../pages/product/Products.vue";
 
 const routes = [
   { path: "/", component: MainView },
@@ -18,6 +19,7 @@ const routes = [
   { path: "/join_agreement", component: JoinAgreement },
   { path: "/products/:id", component: ProductDetail },
   { path: "/join_form", component: JoinForm },
+  { path: "/products", component: Products },
 ];
 
 const router = createRouter({

@@ -1,16 +1,16 @@
 <script setup>
-import { onMounted, reactive, watch } from "vue";
+import { onMounted, reactive, ref, watch } from "vue";
 import { useCategoryStore } from "../../../stores/useCategoryStore";
 
 const categoryStore = useCategoryStore();
 
-const smallCate = reactive({
+const smallCate = ref({
   idx: 0,
   name: "전체",
 });
 
 const changeSmallCate = (cate) => {
-  smallCate = cate;
+  smallCate.value = cate;
 };
 
 const getSmallCategoryList = async () => {

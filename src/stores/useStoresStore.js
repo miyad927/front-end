@@ -3,6 +3,7 @@ import { defineStore } from "pinia";
 
 export const useStoresStore = defineStore("stores", {
   state: () => ({
+    stores: [],
     storeTab: "description",
   }),
 
@@ -35,6 +36,7 @@ export const useStoresStore = defineStore("stores", {
           }
         )
         .then((response) => {
+          this.stores = response.data.stores;
           return response.data.stores;
         })
         .catch((error) => {

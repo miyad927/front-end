@@ -1,105 +1,109 @@
-<script setup></script>
+<script setup>
+import { ref } from "vue";
+const loginData = ref({
+  id: "",
+  password: "",
+});
+</script>
 <template>
-  <div class="container">
-    <div class="main">
-      <div class="location_wrap">
-        <div class="location_cont">
-          <em><a href="/" class="local_home">HOME</a> &gt; 로그인</em>
-        </div>
+  <div class="main">
+    <div class="location_wrap">
+      <div class="location_cont">
+        <em><a href="/" class="local_home">HOME</a> &gt; 로그인</em>
       </div>
-      <div class="content_wrap">
-        <div class="member_wrap">
-          <div class="member_cont">
-            <div class="member_tit">
-              <h2>로그인</h2>
+    </div>
+    <div class="content_wrap">
+      <div class="member_wrap">
+        <div class="member_cont">
+          <div class="member_tit">
+            <h2>로그인</h2>
+          </div>
+          <div class="member_login_box">
+            <div class="login_input_sec">
+              <input
+                type="text"
+                id="loginId"
+                name="loginId"
+                value=""
+                placeholder="ID"
+                v-model="loginData.id"
+              />
+              <input
+                type="password"
+                id="loginPwd"
+                name="loginPwd"
+                value=""
+                placeholder="PASSWORD"
+                v-model="loginData.password"
+              />
             </div>
-            <div class="member_login_box">
-              <div class="login_input_sec">
+            <div class="id_chk">
+              <span class="form_element">
                 <input
-                  type="text"
-                  id="loginId"
-                  name="loginId"
-                  value=""
-                  placeholder="ID"
-                  v-model="loginData.id"
+                  type="checkbox"
+                  id="saveId"
+                  name="saveId"
+                  value="y"
+                  checked=""
                 />
+                <label for="saveId" class="">아이디 저장</label>
+              </span>
+              <span class="form_element">
                 <input
-                  type="password"
-                  id="loginPwd"
-                  name="loginPwd"
-                  value=""
-                  placeholder="PASSWORD"
-                  v-model="loginData.password"
+                  type="checkbox"
+                  class="fd_checkbox"
+                  name="saveAutoLogin"
+                  value="y"
+                  id="saveAutoLogin"
+                  checked="checked"
                 />
-              </div>
-              <div class="id_chk">
-                <span class="form_element">
-                  <input
-                    type="checkbox"
-                    id="saveId"
-                    name="saveId"
-                    value="y"
-                    checked=""
-                  />
-                  <label for="saveId" class="">아이디 저장</label>
-                </span>
-                <span class="form_element">
-                  <input
-                    type="checkbox"
-                    class="fd_checkbox"
-                    name="saveAutoLogin"
-                    value="y"
-                    id="saveAutoLogin"
-                    checked="checked"
-                  />
-                  <label for="saveAutoLogin">자동로그인</label>
-                </span>
-                <p class="dn js_caution_msg1">
-                  아이디, 비밀번호가 일치하지 않습니다. 다시 입력해 주세요.
-                </p>
-              </div>
-              <button class="btn_submit" @click="login">로그인</button>
-              <ul class="btn_login_box">
-                <li>
-                  <a href="./Join" class="btn_member_join_new"> 회원가입 </a>
-                </li>
-              </ul>
+                <label for="saveAutoLogin">자동로그인</label>
+              </span>
+              <p class="dn js_caution_msg1">
+                아이디, 비밀번호가 일치하지 않습니다. 다시 입력해 주세요.
+              </p>
             </div>
-            <!-- //login_box -->
+            <button class="btn_submit" @click="login">로그인</button>
+            <ul class="btn_login_box">
+              <li>
+                <a href="./Join" class="btn_member_join_new"> 회원가입 </a>
+              </li>
+            </ul>
+          </div>
+          <!-- //login_box -->
 
-            <div class="easy_login">
-              <h3>SNS 간편 로그인</h3>
-              <div class="sns_list">
-                <a
-                  href="#"
-                  class="kakao_login js_btn_kakao_login"
-                  data-kakao-type="login"
-                  data-return-url="https%3A%2F%2Fwww.foodingfactory.com%2Fgoods%2Fbest.php"
-                >
-                  <img
-                    src="https://thenaum.cdn-nhncommerce.com/data/skin/front/moment/img/member/icon_kakao.png"
-                    alt="카카오 아이디 로그인"
-                  />
-                </a>
-                <a
-                  href="#"
-                  class="naver_login js_btn_naver_login"
-                  data-naver-url="https://socialmember.godo.co.kr/NaverLogin/naver_api.php?mode=login&amp;response_type=code&amp;client_id=JFIziYYgMBSYpY5KjrY9&amp;redirect_uri=https%3A%2F%2Fwww.foodingfactory.com%2Fgoods%2Fbest.php&amp;state=9cd077e6ebb76da5ccf25819b39b6736"
-                >
-                  <img
-                    src="https://thenaum.cdn-nhncommerce.com/data/skin/front/moment/img/member/icon_naver.png"
-                    alt="naver 아이디 로그인"
-                  />
-                </a>
+          <div class="easy_login">
+            <h3>SNS 간편 로그인</h3>
+            <div class="sns_list">
+              <a
+                href="#"
+                class="kakao_login js_btn_kakao_login"
+                data-kakao-type="login"
+                data-return-url="https%3A%2F%2Fwww.foodingfactory.com%2Fgoods%2Fbest.php"
+              >
+                <img
+                  src="https://thenaum.cdn-nhncommerce.com/data/skin/front/moment/img/member/icon_kakao.png"
+                  alt="카카오 아이디 로그인"
+                />
+              </a>
+              <a
+                href="#"
+                class="naver_login js_btn_naver_login"
+                data-naver-url="https://socialmember.godo.co.kr/NaverLogin/naver_api.php?mode=login&amp;response_type=code&amp;client_id=JFIziYYgMBSYpY5KjrY9&amp;redirect_uri=https%3A%2F%2Fwww.foodingfactory.com%2Fgoods%2Fbest.php&amp;state=9cd077e6ebb76da5ccf25819b39b6736"
+              >
+                <img
+                  src="https://thenaum.cdn-nhncommerce.com/data/skin/front/moment/img/member/icon_naver.png"
+                  alt="naver 아이디 로그인"
+                />
+              </a>
 
-                <a href="#" class="btn_apple_login js_btn_apple_login">
-                  <img
-                    id="apple_btn"
-                    src="https://thenaum.cdn-nhncommerce.com/data/skin/front/moment/img/member/icon_apple.png"
-                    alt="Apple 아이디 로그인"
-                  />
-                </a>
-              </div>
+              <a href="#" class="btn_apple_login js_btn_apple_login">
+                <img
+                  id="apple_btn"
+                  src="https://thenaum.cdn-nhncommerce.com/data/skin/front/moment/img/member/icon_apple.png"
+                  alt="Apple 아이디 로그인"
+                />
+              </a>
             </div>
           </div>
         </div>
@@ -164,10 +168,6 @@ input[type="radio"] + label {
   display: block;
   clear: both;
   content: "";
-}
-
-.container {
-  padding-bottom: 3.75rem;
 }
 
 .content_wrap {

@@ -1,19 +1,129 @@
 <script setup>
-import { onMounted } from "vue";
-import ReservationBox from "./components/ReservationBox.vue";
+import { onMounted, ref } from "vue";
 import { useRoute } from "vue-router";
+import { useStoresStore } from "../../stores/useStoresStore";
+import ReservationBox from "./components/ReservationBox.vue";
+import StoreDescription from "./components/StoreDescription.vue";
+import StoreMenuList from "./components/StoreMenuList.vue";
+import StoreReviewList from "./components/StoreReviewList.vue";
 
-const route = useRoute()
+const storeData = ref({
+  name: "",
+  description: "",
+  category: "",
+  shortAddress: "",
+  address: "",
+  call_number: "",
+  opening_hours: "",
+  start_time: "",
+  end_time: "",
+  closed_day: "",
+  starPoint: 0.0,
+  reviewCnt: 0,
+  menu: [],
+});
 
-onMounted(() => {
+const route = useRoute();
+const storesStore = useStoresStore();
+
+const changeTab = (tab) => {
+  storesStore.setStoreTab(tab);
+};
+
+onMounted(async () => {
   const storeIdx = route.params.id;
-  console.log(storeIdx);
+  const result = await storesStore.getStoreDetail(storeIdx);
+  storeData.value = result.store;
+  console.log(storeData.value);
 });
 </script>
 
 <template>
   <div class="main">
-    <section class="store"></section>
+    <section class="store">
+      <div class="store_info">
+        <img
+          src="https://d12zq4w4guyljn.cloudfront.net/750_750_20241123105001_photo1_394db3cb2fa0.jpg"
+          alt="식당 대표 사진"
+        />
+
+        <div class="title_grade_box">
+          <div class="title_box">
+            <h1 class="name">{{ storeData.name }}</h1>
+            <button class="heart_box">
+              <img src="/src/assets/icons/heart_fill.svg" alt="heart" />
+            </button>
+          </div>
+
+          <span class="subtitle"
+            >{{ storeData.shortAddress }} | {{ storeData.category }}</span
+          >
+          <div class="grade">
+            <img src="/src/assets/icons/star_fill.svg" alt="star" />
+            <div class="point">
+              <span class="review_point">{{ storeData.starPoint }}</span>
+              <span class="review_count"
+                >(리뷰 {{ storeData.reviewCnt }}개)</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="info_box">
+          <ul>
+            <li class="info_list">
+              <img src="/src/assets/icons/map.svg" alt="장소" />
+              <span>{{ storeData.address }}</span>
+            </li>
+            <li class="info_list">
+              <img src="/src/assets/icons/call.svg" alt="전화번호" />
+              <span>{{ storeData.call_number }}</span>
+            </li>
+            <li class="info_list">
+              <img src="/src/assets/icons/clock.svg" alt="영업시간" />
+
+              <span>{{ storeData.opening_hours }}</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <ul class="store_tab_list">
+        <li
+          class="store_tab_item"
+          :class="{ picked: storesStore.storeTab === 'description' }"
+          @click="changeTab('description')"
+        >
+          소개
+        </li>
+        <li
+          class="store_tab_item"
+          :class="{ picked: storesStore.storeTab === 'menu' }"
+          @click="changeTab('menu')"
+        >
+          메뉴
+        </li>
+        <li
+          class="store_tab_item"
+          :class="{ picked: storesStore.storeTab === 'review' }"
+          @click="changeTab('review')"
+        >
+          리뷰
+        </li>
+        <li class="store_tab_item">밀키트</li>
+      </ul>
+
+      <StoreDescription
+        v-if="storesStore.storeTab === 'description'"
+        :description="storeData.description"
+      />
+      <StoreMenuList
+        v-if="storesStore.storeTab === 'menu'"
+        :menu="storeData.menu"
+      />
+      <StoreReviewList v-if="storesStore.storeTab === 'review'" />
+    </section>
+
     <aside class="reservation">
       <ReservationBox />
     </aside>
@@ -30,11 +140,159 @@ onMounted(() => {
   width: 100%;
 }
 
+.store_info > img {
+  width: 100%;
+  height: 31.25rem;
+  object-fit: cover;
+  margin-bottom: 2.5rem;
+}
+
+.title_grade_box {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.2rem;
+  margin: 0 0 1.2rem 0.625rem;
+}
+
+.title_box {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  gap: 1rem;
+}
+
+.title_box .name {
+  font-size: 2.2rem;
+  color: #202020;
+  font-weight: 700;
+}
+
+.heart_box {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  display: grid;
+  place-content: center;
+}
+
+.heart_box > img {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: #7e7e7e;
+}
+
+.grade {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 1rem;
+}
+
+.grade > img {
+  width: 1.8rem;
+  height: 1.8rem;
+}
+
+.grade .point {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.point .review_point {
+  color: #202020;
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.point .review_count {
+  color: #9e9e9e;
+}
+
+/* 가게 세부 정보 */
+.info_box {
+  padding: 1rem 0.7rem;
+}
+
+.info_list {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.info_list > img {
+  width: 1rem;
+  height: 1rem;
+}
+
+.info_list > span {
+  color: #1a1a1a;
+}
+
+/* 목록 선택 */
+.store_tab_list {
+  width: 100%;
+  height: 2.5rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 1rem 0 2rem;
+  border-top: 1px solid #cecece;
+  border-bottom: 1px solid #cecece;
+}
+
+.store_tab_item {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: content-box;
+}
+
+.store_tab_item:active,
+.store_tab_item:hover {
+  border-bottom: 1px solid #000;
+}
+
+.store_tab_item.picked {
+  font-weight: 700;
+}
+
+/* 예약 */
 .reservation {
   width: 20rem;
   margin-left: 3rem;
   z-index: 10;
   display: flex;
   flex-direction: column;
+}
+
+@media (max-width: 960px) {
+  .main {
+    min-width: auto;
+    max-width: 35rem;
+  }
+  .store {
+    min-width: 25rem;
+  }
+  .store_info > img {
+    width: 100%;
+    height: 18.75rem;
+    max-width: 35rem;
+  }
+  .reservation {
+    display: none;
+  }
+  .store_tab_list {
+    margin-top: 4rem;
+  }
 }
 </style>

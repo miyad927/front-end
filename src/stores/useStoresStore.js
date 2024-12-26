@@ -45,7 +45,7 @@ export const useStoresStore = defineStore("stores", {
     async getStoreDetail(storeId) {
       const response = await axios
         .get(
-          `https://2deee6c7-ce64-440b-80cd-b66969cb5b6e.mock.pstmn.io/store/?id=${storeId}`
+          `https://2deee6c7-ce64-440b-80cd-b66969cb5b6e.mock.pstmn.io/store/${storeId}`
         )
         .catch((error) => {
           console.error("getStoreDetail api error", error);

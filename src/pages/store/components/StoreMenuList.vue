@@ -32,7 +32,7 @@ const props = defineProps({
 }
 
 .menu_box > h2 {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   margin-bottom: 1rem;
 }
 
@@ -45,6 +45,7 @@ const props = defineProps({
   display: flex;
   justify-content: space-between;
   margin-top: 1rem;
+  font-size: 0.9rem;
 }
 
 .menu_list:first-child {

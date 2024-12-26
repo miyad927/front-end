@@ -89,7 +89,7 @@ onMounted(async () => {
 
 .review_user {
   color: #7e7e7e;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   margin-bottom: 1rem;
 }
 
@@ -100,7 +100,7 @@ onMounted(async () => {
 }
 
 .review_image_box {
-  width: 30rem;
+  width: 100%;
   height: 10rem;
   display: flex;
   justify-content: flex-start;
@@ -112,5 +112,9 @@ onMounted(async () => {
   width: 10rem;
   border-radius: 1rem;
   object-fit: cover;
+}
+
+.review_item p {
+  font-size: 1rem;
 }
 </style>

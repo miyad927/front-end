@@ -1,4 +1,5 @@
 <script setup>
+import { defineProps } from "vue";
 const props = defineProps({
   product: {
     type: Object,
@@ -8,7 +9,7 @@ const props = defineProps({
 </script>
 <template>
   <div class="list">
-    <router-link to="/" class="img_box">
+    <router-link :to="`/products/${product.id}`" class="img_box">
       <img :src="`${product.imgPath}`" />
     </router-link>
     <div class="info_box">

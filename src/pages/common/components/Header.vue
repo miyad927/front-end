@@ -7,7 +7,7 @@
         <div><router-link to="/login">로그인</router-link></div>
         <div><router-link to="/join">회원가입</router-link></div>
         <div><router-link to="/">주문조회</router-link></div>
-        <div><router-link to="/">마이페이지</router-link></div>
+        <div><router-link to="/mypage">마이페이지</router-link></div>
       </div>
       <div class="search_area">
         <div class="logo"><router-link to="/">Eatzzy</router-link></div>
@@ -85,7 +85,7 @@
       <nav>
         <ul class="l_nav_wrap">
           <li class="first_nav gnb_all_btn" id="gnb_all_btn">카테고리</li>
-          <li><router-link to="/store">맛집리스트</router-link></li>
+          <li><router-link to="/stores">맛집리스트</router-link></li>
           <li class="last_nav">
             <router-link to="/products">밀키트 상품</router-link>
           </li>

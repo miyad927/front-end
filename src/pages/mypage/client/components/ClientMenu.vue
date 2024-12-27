@@ -46,7 +46,7 @@ ul li {
 .menu_wrap {
   padding: 3.125rem 0;
   letter-spacing: -0.02em;
-  width: 10.75rem;
+  width: 14rem;
   box-sizing: border-box;
   display: block;
   unicode-bidi: isolate;

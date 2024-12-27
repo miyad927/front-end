@@ -1,16 +1,28 @@
 <script setup>
+import { onMounted, ref } from "vue";
+import { useOrderStore } from "../../../stores/useOrderStore";
 
+
+const orderList = ref([]);
+
+const orderStore = useOrderStore();
+
+onMounted(async () => {
+  const result = await orderStore.getClientOrderList();
+  console.log(result);
+  orderList.value = result.orders;
+});
 </script>
 
 <template>
   <div class="order_container">
     <h1>주문 내역</h1>
     <ul class="order_list">
-      <li class="order_card">
+      <li v-for="order in orderList" class="order_card">
         <div class="order_header">
           <div class="text_box">
-            <p>2024.12.19</p>
-            <p>주문번호: 274387429</p>
+            <p>{{order.createdAt}}</p>
+            <p>주문번호: {{order.idx}}</p>
           </div>
           <div>
             <span>주문 상세보기</span>
@@ -19,9 +31,8 @@
         </div>
         <div class="line"></div>
         <div class="order_body">
-          <p>결제 완료</p>
+          <p>{{ order.status }}</p>
           <ul class="product_list">
-
             <li class="product_item">
               <img
                 src="https://thenaum.cdn-nhncommerce.com/data/goods/15/01/26/1000000463/1000000463_magnify_07.jpg"
@@ -56,20 +67,20 @@
 </template>
 
 <style scoped>
-.order_container {
-  width: 100%;
-  padding: 2rem 5rem;
+.order_container > h1 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .order_list {
   width: 100%;
-  margin: 2rem auto;
 }
 
 .order_card {
   border-radius: 1rem;
   border: 1px solid #ccc;
   padding: 1.5rem;
+  margin: 1rem 0;
 }
 
 .order_card > .line {

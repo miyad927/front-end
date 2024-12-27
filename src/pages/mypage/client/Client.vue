@@ -19,6 +19,7 @@ import ClientSummary from "./components/ClientSummary.vue";
   display: flex;
 }
 .ClientContainer {
-  padding: 3.125rem 3.125rem;
+  padding: 3.125rem;
+  width: 100%;
 }
 </style>

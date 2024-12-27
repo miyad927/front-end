@@ -39,7 +39,7 @@ const routes = [
     redirect: checkUserType,
     children: [
       {
-        path: "client",
+        path: "client",z
         component: Client,
         children: [{ path: "order", component: ClientOrder }],
       },

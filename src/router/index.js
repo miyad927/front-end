@@ -8,6 +8,13 @@ import Join from "../pages/user/Join.vue";
 import JoinAgreement from "../pages/user/JoinAgreement.vue";
 import ProductDetail from "../pages/product/components/ProductDetail.vue";
 import JoinForm from "../pages/user/JoinForm.vue";
+import ProductList from "../pages/mypage/seller/ProductList.vue";
+import ProductModify from "../pages/mypage/seller/ProductModify.vue";
+import ProductOrder from "../pages/mypage/seller/ProductOrder.vue";
+import OrderDetails from "../pages/mypage/seller/OrderDetails.vue";
+import ProductRegister from "../pages/mypage/seller/ProductRegister.vue";
+import ShippingRegister from "../pages/mypage/seller/ShippingRegister.vue";
+
 import Products from "../pages/product/Products.vue";
 import Mypage from "../pages/mypage/Mypage.vue";
 import Client from "../pages/mypage/client/Client.vue";

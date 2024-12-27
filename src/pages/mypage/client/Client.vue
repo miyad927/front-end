@@ -1,12 +1,24 @@
-<script setup></script>
+<script setup>
+import ClientMenu from "./components/ClientMenu.vue";
+import ClientSummary from "./components/ClientSummary.vue";
+</script>
 
 <template>
-  고객 마이페이지
-  <!-- <div>사이드바</div> -->
-  <div>
-    <router-link to="/mypage/client/order">주문 내역</router-link>
+  <div class="main">
+    <ClientMenu></ClientMenu>
+    <div class="ClientContainer">
+      <ClientSummary></ClientSummary>
+      <router-view></router-view>
+    </div>
   </div>
-  <router-view></router-view>
 </template>
 
-<style scoped></style>
+<style scoped>
+.main {
+  padding: 0;
+  display: flex;
+}
+.ClientContainer {
+  padding: 3.125rem 3.125rem;
+}
+</style>

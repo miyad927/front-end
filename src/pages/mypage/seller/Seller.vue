@@ -1,13 +1,22 @@
 <script setup>
-
+import SellerMenu from "./components/SellerMenu.vue";
 </script>
 
 <template>
-  점주 마이페이지
-  <!-- <div>사이드바 (컴포넌트 만들기)</div> -->
-  <router-view></router-view>
+  <div class="main">
+    <SellerMenu></SellerMenu>
+    <div class="SellerContainer">
+      <router-view></router-view>
+    </div>
+  </div>
 </template>
 
 <style scoped>
-
+.main {
+  padding: 0;
+  display: flex;
+}
+.SellerContainer {
+  padding: 3.125rem 3.125rem;
+}
 </style>

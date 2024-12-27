@@ -43,7 +43,6 @@ const btnNextStep = () => {
                     >Eatzzy의 모든 약관을 확인하고 전체 동의합니다.&nbsp;</em
                   ></label
                 >
-                <span>(필수항목, 선택항목도 포함됩니다.)</span>
               </div>
             </div>
           </label>
@@ -422,7 +421,7 @@ const btnNextStep = () => {
                               <li>
                                 ⑤ 기타 다음과 같은 행위 등으로 ‘몰’의 건전한
                                 운영을 해하거나 업무를 방해하는 경우<br />
-                                <ul style="padding: 0 0 0 1rem">
+                                <ul style="padding: 0 0 0 16px">
                                   <br />
                                   <li>
                                     가. “몰”의 운영과 관련하여 근거 없는 사실
@@ -584,10 +583,7 @@ const btnNextStep = () => {
                             없습니다.
                             <ul
                               class="circlednum_type"
-                              style="
-                                padding-left: 1.75rem;
-                                text-indent: -0.9375rem;
-                              "
+                              style="padding-left: 28px; text-indent: -15px"
                             >
                               <li>
                                 ① 폰뱅킹, 인터넷뱅킹, 메일 뱅킹 등의 각종
@@ -897,10 +893,7 @@ const btnNextStep = () => {
                             이용자는 다음 행위를 하여서는 안 됩니다.
                             <ul
                               class="circlednum_type"
-                              style="
-                                padding-left: 1.75rem;
-                                text-indent: -0.9375rem;
-                              "
+                              style="padding-left: 28px; text-indent: -15px"
                             >
                               <li>① 신청 또는 변경시 허위 내용의 등록</li>
                               <li>② 타인의 정보 도용</li>
@@ -1291,8 +1284,8 @@ const btnNextStep = () => {
                     cellspacing="0"
                   >
                     <colgroup>
-                      <col width="3.125rem" />
-                      <col width="16.25rem" />
+                      <col width="50px" />
+                      <col width="260px" />
                     </colgroup>
                     <thead>
                       <tr>
@@ -1337,8 +1330,8 @@ const btnNextStep = () => {
                     cellspacing="0"
                   >
                     <colgroup>
-                      <col width="3.125rem" />
-                      <col width="16.25rem" />
+                      <col width="50px" />
+                      <col width="260px" />
                     </colgroup>
                     <thead>
                       <tr>
@@ -1406,7 +1399,7 @@ const btnNextStep = () => {
 <style scoped>
 .main {
   width: 50%;
-  min-width: 600px;
+  min-width: 37.5rem;
   margin: 0 auto;
 }
 
@@ -1423,9 +1416,9 @@ const btnNextStep = () => {
 
 .location_cont em {
   display: inline-block;
-  padding: 12px 0 10px 0;
+  padding: 0.75rem 0 0.625rem 0;
   color: #777777;
-  font-size: 12.5008px;
+  font-size: 0.7813rem;
 }
 
 .location_cont .local_home {
@@ -1440,45 +1433,45 @@ const btnNextStep = () => {
 
 .member_tit {
   overflow: hidden;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 0.0625rem solid #e0e0e0;
   display: flex;
   justify-content: flex-end;
 }
 
 .member_tit ol {
-  line-height: 35px;
+  line-height: 2.1875rem;
   display: flex;
-  column-gap: 10px;
+  column-gap: 0.625rem;
 }
 
 .member_tit ol li {
-  font-size: 14px;
+  font-size: 0.875rem;
   color: #d1d1d1;
   display: flex;
   align-items: center;
-  column-gap: 10px;
+  column-gap: 0.625rem;
 }
 
 .member_tit .page_on {
-  color: #00a7b3;
+  color: var(--point-color);
 }
 
 .member_tit2 {
   width: 100%;
   text-align: center;
-  margin: 32px 0;
+  margin: 2rem 0;
   display: inline-block;
 }
 
 .member_tit2 p {
-  font-size: 50px;
+  font-size: 3.125rem;
   color: #222222;
   letter-spacing: -0.05em;
   line-height: 1;
 }
 
 .txt_mainco {
-  color: #00a7b3 !important;
+  color: var(--point-color) !important;
 }
 
 .member_cont {
@@ -1486,13 +1479,12 @@ const btnNextStep = () => {
 }
 
 .join_agreement_cont {
-  padding: 0 0 40px 0;
+  padding: 0 0 2.5rem 0;
 }
 
 .agree_all {
-  background: #00a7b3;
-  color: #fff;
-  padding: 15px 0 10px 40px;
+  background: #eee;
+  padding: 0.9375rem 0 0.625rem 2.5rem;
   cursor: pointer;
   text-align: left;
 }
@@ -1500,36 +1492,35 @@ const btnNextStep = () => {
 .form_element em {
   font-weight: 400;
   cursor: pointer;
-  font-size: 19px;
-  line-height: 25px;
-  margin-left: 7px;
+  font-size: 1rem;
+  line-height: 1.5625rem;
+  margin-left: 0.4375rem;
 }
 
 .form_element span {
-  color: #fff;
-  font-size: 14px;
+  font-size: 0.875rem;
   display: block;
   text-align: left;
-  text-indent: 34px;
+  text-indent: 2.125rem;
 }
 
 .agreement_box {
   overflow-x: hidden;
   overflow-y: auto;
-  height: 189px;
-  padding: 20px;
-  border: 1px solid #c9c9c9;
+  height: 11.8125rem;
+  padding: 1.25rem;
+  border: 0.0625rem solid #c9c9c9;
   border-top: none !important;
-  line-height: 18px;
-  margin-bottom: 5px;
+  line-height: 1.125rem;
+  margin-bottom: 0.3125rem;
   width: 100%;
   box-sizing: border-box;
 }
 
 .join_agreebox_wrap {
-  border: 1px solid #c9c9c9;
+  border: 0.0625rem solid #c9c9c9;
   border-top: none !important;
-  padding: 19px 40px 22px 40px;
+  padding: 1.1875rem 2.5rem 1.375rem 2.5rem;
   display: inline-block;
   width: 100%;
   box-sizing: border-box;
@@ -1542,40 +1533,40 @@ const btnNextStep = () => {
 }
 
 .join_certify_list .form_element {
-  font-size: 18px;
+  font-size: 1.125rem;
 }
 .join_certify_list .form_element p {
-  font-size: 15px;
+  font-size: 0.9375rem;
   text-align: left;
-  padding-left: 28px;
+  padding-left: 1.75rem;
 }
 
 .join_agreebox_wrap .form_element {
-  border-bottom: 1px solid #c9c9c9;
-  font-size: 16px;
+  border-bottom: 0.0625rem solid #c9c9c9;
+  font-size: 1rem;
   font-weight: 300;
   letter-spacing: -0.02em;
-  height: 61px;
+  height: 3.8125rem;
   width: 100%;
-  line-height: 57px;
+  line-height: 3.5625rem;
   display: inline-block;
 }
 
 .join_agreebox_wrap .form_element label.check_s {
-  background-position: 1px 20.5008px;
+  background-position: 0.0625rem 1.2813rem;
 }
 .join_agreebox_wrap .form_element strong {
   font-weight: 400;
 }
 
 .join_agreebox_wrap .form_element span > a {
-  border: 1px solid #c9c9c9;
-  border-radius: 5px;
-  width: 81px;
-  height: 29px;
-  padding: 6px 10px 6px 10px;
-  margin: 15px 11px 0 0;
-  font-size: 14px;
+  border: 0.0625rem solid #c9c9c9;
+  border-radius: 0.3125rem;
+  width: 5.0625rem;
+  height: 1.8125rem;
+  padding: 0.375rem 0.625rem 0.375rem 0.625rem;
+  margin: 0.9375rem 0.6875rem 0 0;
+  font-size: 0.875rem;
   color: #222;
   text-decoration: none !important;
 }
@@ -1587,13 +1578,13 @@ const btnNextStep = () => {
 
 .join_agreebox_wrap .form_element .agreenment_toggle_btn {
   background: url(https://thenaum.cdn-nhncommerce.com/data/skin/front/moment/img/member/join_chosen_sprite.png)
-    no-repeat 7px 7px;
-  border: 1px solid #c9c9c9;
-  border-radius: 5px;
-  width: 29px;
-  height: 29px;
+    no-repeat 0.4375rem 0.4375rem;
+  border: 0.0625rem solid #c9c9c9;
+  border-radius: 0.3125rem;
+  width: 1.8125rem;
+  height: 1.8125rem;
   padding: 0;
-  margin: 15px 0 0 0;
+  margin: 0.9375rem 0 0 0;
   cursor: pointer;
 }
 
@@ -1602,8 +1593,8 @@ const btnNextStep = () => {
 }
 
 .join_agreement_box table th {
-  padding: 20px 0;
-  border-left: 1px solid #dcdcdc;
+  padding: 1.25rem 0;
+  border-left: 0.0625rem solid #dcdcdc;
   background: #fbfbfb;
 }
 
@@ -1613,10 +1604,10 @@ const btnNextStep = () => {
 }
 
 .join_agreement_box table td {
-  padding: 20px 0 20px 10px;
-  border-top: 1px solid #dcdcdc;
-  border-left: 1px solid #dcdcdc;
-  border-bottom: 1px solid #dcdcdc;
+  padding: 1.25rem 0 1.25rem 0.625rem;
+  border-top: 0.0625rem solid #dcdcdc;
+  border-left: 0.0625rem solid #dcdcdc;
+  border-bottom: 0.0625rem solid #dcdcdc;
 }
 
 .join_agreement_cont .agreement_choice_box table {
@@ -1624,8 +1615,8 @@ const btnNextStep = () => {
 }
 
 .join_agreement_cont .agreement_choice_box table th {
-  padding: 20px 0;
-  border-left: 1px solid #dcdcdc;
+  padding: 1.25rem 0;
+  border-left: 0.0625rem solid #dcdcdc;
   background: #fbfbfb;
 }
 
@@ -1635,26 +1626,26 @@ const btnNextStep = () => {
 }
 
 .join_agreement_cont .agreement_choice_box table td {
-  padding: 20px 0 20px 10px;
-  border-top: 1px solid #dcdcdc;
-  border-left: 1px solid #dcdcdc;
-  border-bottom: 1px solid #dcdcdc;
+  padding: 1.25rem 0 1.25rem 0.625rem;
+  border-top: 0.0625rem solid #dcdcdc;
+  border-left: 0.0625rem solid #dcdcdc;
+  border-bottom: 0.0625rem solid #dcdcdc;
 }
 
 .join_certify_box {
-  margin: 30px 0 0 0;
+  margin: 1.875rem 0 0 0;
 }
 
 .join_certify_box h3 {
   font-weight: bold;
-  padding: 0 0 9px 0;
-  font-size: 24px;
+  padding: 0 0 0.5625rem 0;
+  font-size: 1.5rem;
   text-align: center;
 }
 
 .join_certify_list {
-  padding: 30px 0;
-  border: 1px solid #c9c9c9;
+  padding: 1.875rem 0;
+  border: 0.0625rem solid #c9c9c9;
 }
 
 .join_certify_list ul {
@@ -1669,7 +1660,7 @@ const btnNextStep = () => {
   display: flex;
   justify-content: center;
   align-items: center;
-  column-gap: 1.875rem;
+  column-gap: 30px;
 }
 
 .join_certify_list .phone_join_certify .form_element {
@@ -1681,46 +1672,46 @@ const btnNextStep = () => {
 }
 
 .join_certify_list .form_element label.choice_s {
-  padding: 0 0 0 28px;
+  padding: 0 0 0 1.75rem;
   background: url(https://thenaum.cdn-nhncommerce.com/data/skin/front/moment/img/common/input/radio_off_small.png)
-    no-repeat 1px 50%;
+    no-repeat 0.0625rem 50%;
 }
 
 .btn_member_prev {
-  font-size: 1.125rem;
+  font-size: 18px;
   font-weight: 400;
-  width: 13.5rem;
-  height: 3.1875rem;
+  width: 216px;
+  height: 51px;
   margin: 0;
-  color: #00a7b3;
-  border: 0.0625rem solid #00a7b3;
+  color: var(--point-color);
+  border: 1px solid var(--point-color);
   background: #ffffff;
   cursor: pointer;
 }
 
 .btn_center_box {
-  margin: 2.1875rem 0 0 0;
+  margin: 35px 0 0 0;
   display: flex;
   justify-content: center;
-  column-gap: 0.3125rem;
+  column-gap: 5px;
 }
 
 .btn_member_next {
-  font-size: 1.125rem;
+  font-size: 18px;
   font-weight: 400;
-  width: 13.5rem;
-  height: 3.1875rem;
+  width: 216px;
+  height: 51px;
   margin: 0;
-  border: 0.0625rem solid #00a7b3;
-  background: #00a7b3;
+  border: 1px solid var(--point-color);
+  background: var(--point-color);
   cursor: pointer;
   color: #fff;
 }
 
-@media (max-width: 960px) {
+@media (max-width: 60rem) {
   .main {
-    min-width: 25rem;
-    max-width: 35rem;
+    min-width: 400px;
+    max-width: 560px;
   }
 }
 </style>

@@ -1,9 +1,16 @@
 <script setup>
 import { ref } from "vue";
+import { useMemberStore } from "../../stores/useMemberStore";
+const memberStore = useMemberStore();
 const loginData = ref({
   id: "",
   password: "",
 });
+
+const login = async () => {
+  const result = await memberStore.login(loginData.value);
+  console.log(result);
+};
 </script>
 <template>
   <div class="main">

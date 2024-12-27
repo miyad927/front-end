@@ -74,15 +74,9 @@
         <div class="member_guide_txt">
           <p>
             이미 쇼핑몰 회원이신가요?
-            <a href="#" id="btnLoginMember" class="login_btn">로그인</a>
+            <router-link to="/login" class="login_btn">로그인</router-link>
           </p>
         </div>
-      </div>
-      <div class="banner_wrap">
-        <a href="/board/view.php?category=event&amp;bdId=event&amp;sno=175"
-          ><img
-            src="https://thenaum.cdn-nhncommerce.com/data/img/allnew/member/join_banner.jpg"
-        /></a>
       </div>
     </div>
   </div>
@@ -121,16 +115,7 @@
   margin: 0 auto;
 }
 .content_wrap {
-  width: 750px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-}
-
-.content_wrap .member_wrap {
-  width: 411px;
-  flex-shrink: 0;
-  margin: 0;
+  width: 100%;
 }
 
 .content_wrap .member_wrap .member_tit h2 {

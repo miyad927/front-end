@@ -22,6 +22,17 @@ const checkUserType = (from, to, next) => {
   }
   return "/mypage/client";
 };
+import { useMemberStore } from "../stores/useMemberStore";
+
+const checkLogin = async (from, to, next) => {
+  const memberStore = useMemberStore();
+  await memberStore.loginCheck();
+  if (memberStore.isLogin) {
+    return next();
+  }
+
+  next("/login");
+};
 
 const routes = [
   { path: "/", component: MainView },

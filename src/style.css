@@ -60,7 +60,7 @@ input[type="radio"] + label:before {
 }
 input[type="checkbox"] + label:after,
 input[type="radio"] + label:after {
-  background-color: #00a7b3;
+  background-color: var(--point-color);
   top: 50%;
   left: 0.375rem;
   width: 0.5rem;
@@ -348,7 +348,7 @@ input[type="submit"] {
   display: block;
 }
 #wrap .text_warning {
-  color: #00a7b3;
+  color: var(--point-color);
   text-align: left;
 }
 #wrap .text_pass {
@@ -362,7 +362,7 @@ input[type="submit"] {
 #wrap .member_warning.prior_wrong .prior_input,
 #wrap .member_warning.prior_wrong .chosen-single {
   margin-bottom: 0.3125rem;
-  border: 1px solid #00a7b3;
+  border: 1px solid var(--point-color);
 }
 #wrap .member_warning.prior_wrong .chosen-drop {
   margin-top: -0.375rem;

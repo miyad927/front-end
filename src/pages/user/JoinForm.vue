@@ -183,7 +183,7 @@
                       maxlength="12"
                       placeholder="- 없이 입력하세요."
                       data-pattern="gdNum"
-                      value="01012345678"
+                      value=""
                     />
                   </div>
                 </td>
@@ -471,7 +471,7 @@ h2 {
 }
 
 .btn_center_box .btn_ok {
-  background-color: #00a7b3;
+  background-color: var(--point-color);
   color: #fff;
 }
 

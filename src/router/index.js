@@ -14,6 +14,13 @@ import Client from "../pages/mypage/client/Client.vue";
 import Seller from "../pages/mypage/seller/Seller.vue";
 import ClientOrder from "../pages/mypage/client/components/ClientOrder.vue";
 
+import ClientInfo from "../pages/mypage/client/ClientInfo.vue";
+import ClientStoreRez from "../pages/mypage/client/ClientStoreRez.vue";
+import ClientStorelike from "../pages/mypage/client/ClientStorelike.vue";
+import ClientStoreReview from "../pages/mypage/client/ClientStoreReview.vue";
+import ClientProductInfo from "../pages/mypage/client/ClientProductInfo.vue";
+import ClientProductsReview from "../pages/mypage/client/ClientProductsReview.vue";
+
 const checkUserType = (from, to, next) => {
   // 고객인지 점주인지 확인 후 경로 이동
   const userType = false;
@@ -21,6 +28,17 @@ const checkUserType = (from, to, next) => {
     return "/mypage/seller";
   }
   return "/mypage/client";
+};
+import { useMemberStore } from "../stores/useMemberStore";
+
+const checkLogin = async (from, to, next) => {
+  const memberStore = useMemberStore();
+  await memberStore.loginCheck();
+  if (memberStore.isLogin) {
+    return next();
+  }
+
+  next("/login");
 };
 
 const routes = [
@@ -41,7 +59,14 @@ const routes = [
       {
         path: "client",z
         component: Client,
-        children: [{ path: "order", component: ClientOrder }],
+        children: [
+          { path: "info", component: ClientInfo },
+          { path: "store_rez", component: ClientStoreRez },
+          { path: "store_like", component: ClientStorelike },
+          { path: "store_review", component: ClientStoreReview },
+          { path: "product_info", component: ClientProductInfo },
+          { path: "product_review", component: ClientProductsReview },
+        ],
       },
       { path: "seller", component: Seller },
     ],

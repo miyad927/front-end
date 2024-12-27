@@ -455,7 +455,7 @@
                             name="goodsCnt[]"
                             class="goodsCnt_0"
                             title="수량"
-                            value="1"
+                            value="2"
                             data-min-order="1"
                             data-key="0"
                             data-value="1"
@@ -645,17 +645,13 @@
                   찜
                 </button> -->
               <button
+                @click="openModal"
                 class="btn_add_cart btn_buy_cart bc2 fc5"
                 id="cartBtn"
-                onclick="hdbAddToCart();"
-                onmousedown="javascript:try{AW_PRODUCT(document.getElementsByName('goodsCnt[]')[0].value);}catch(e){}"
               >
                 장바구니
               </button>
-              <button
-                class="btn_add_order btn_buy_order bc1 fc5"
-                onmousedown="javascript:try{AW_PRODUCT(document.getElementsByName('goodsCnt[]')[0].value);}catch(e){}"
-              >
+              <button class="btn_add_order btn_buy_order bc1 fc5">
                 바로구매
               </button>
             </div>
@@ -788,7 +784,7 @@
         </div>
       </div>
 
-      <div id="addCartLayer" class="layer_wrap">
+      <div id="addCartLayer" v-if="isModal" class="layer_wrap">
         <div
           class="box add_cart_layer"
           style="position: absolute; margin: 0px; top: 211.5px; left: 551px"
@@ -807,8 +803,12 @@
                 <span>확인</span>
               </button>
             </div>
-            <!-- //btn_box -->
-            <button title="닫기" class="close layer_close" type="button">
+            <button
+              @click="closeModal"
+              title="닫기"
+              class="close layer_close"
+              type="button"
+            >
               닫기
             </button>
           </div>
@@ -822,9 +822,19 @@
 import { onMounted } from "vue";
 import { useProductsStore } from "../../../stores/useProductsStore";
 import { useRoute } from "vue-router";
+import { ref } from "vue";
 const productStore = useProductsStore();
 const route = useRoute();
 const productId = route.params.id;
+const isModal = ref(false);
+
+const openModal = () => {
+  isModal.value = true;
+};
+
+const closeModal = () => {
+  isModal.value = false;
+};
 
 onMounted(async () => {
   await productStore.getProductsDetail(productId);

@@ -505,7 +505,7 @@ header nav .gnb .ctg_wrap > ul li.fd_brand .depth_2 li.on {
 
 header nav .gnb .ctg_wrap > ul li.fd_brand .depth_2 li.on a .title,
 header nav .gnb .ctg_wrap > ul li.fd_brand .depth_2 li.on a .sub {
-  color: #00a7b3;
+  color: var(--point-color);
 }
 
 header nav .gnb .ctg_wrap > ul li.fd_brand .depth_2 li a p:before {

@@ -1,7 +1,7 @@
 <script setup>
 import { onMounted, ref } from "vue";
 import { useOrderStore } from "../../../stores/useOrderStore";
-
+import ClientOrderCard from "./components/ClientOrderCard.vue";
 
 const orderList = ref([]);
 
@@ -18,50 +18,7 @@ onMounted(async () => {
   <div class="order_container">
     <h1>주문 내역</h1>
     <ul class="order_list">
-      <li v-for="order in orderList" class="order_card">
-        <div class="order_header">
-          <div class="text_box">
-            <p>{{order.createdAt}}</p>
-            <p>주문번호: {{order.idx}}</p>
-          </div>
-          <div>
-            <span>주문 상세보기</span>
-            <img src="/src/assets/icons/angle_right.svg" alt="상세보기" />
-          </div>
-        </div>
-        <div class="line"></div>
-        <div class="order_body">
-          <p>{{ order.status }}</p>
-          <ul class="product_list">
-            <li class="product_item">
-              <img
-                src="https://thenaum.cdn-nhncommerce.com/data/goods/15/01/26/1000000463/1000000463_magnify_07.jpg"
-                alt="주문상품"
-              />
-              <div class="product_info">
-                <p>떡볶이 밀키트</p>
-                <div class="price_cnt_box">
-                  <span>14,000원</span>
-                  <span>1개</span>
-                </div>
-              </div>
-            </li>
-            <li class="product_item">
-              <img
-                src="https://thenaum.cdn-nhncommerce.com/data/goods/15/01/26/1000000463/1000000463_magnify_07.jpg"
-                alt="주문상품"
-              />
-              <div class="product_info">
-                <p>떡볶이 밀키트</p>
-                <div class="price_cnt_box">
-                  <span>14,000원</span>
-                  <span>1개</span>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </li>
+      <ClientOrderCard v-for="order in orderList" :order="order" />
     </ul>
   </div>
 </template>

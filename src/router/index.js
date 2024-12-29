@@ -64,8 +64,8 @@ const routes = [
         path: "client",
         component: Client,
         children: [
-          { path: "order", component: ClientOrder },
-          { path: "order/:id", component: ClientOrderDetail },
+          { path: "orders", component: ClientOrder },
+          { path: "orders/:id", component: ClientOrderDetail },
           { path: "info", component: ClientInfo },
           { path: "store_rez", component: ClientStoreRez },
           { path: "store_like", component: ClientStorelike },

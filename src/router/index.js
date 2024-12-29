@@ -30,6 +30,7 @@ const checkUserType = (from, to, next) => {
   return "/mypage/client";
 };
 import { useMemberStore } from "../stores/useMemberStore";
+import Carts from "../pages/cart/Carts.vue";
 
 const checkLogin = async (from, to, next) => {
   const memberStore = useMemberStore();
@@ -69,6 +70,7 @@ const routes = [
         ],
       },
       { path: "seller", component: Seller },
+      {path:"/carts",component:Carts}
     ],
   },
 ];

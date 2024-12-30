@@ -7,7 +7,6 @@ import ClientSummary from "./components/ClientSummary.vue";
   <div class="main">
     <ClientMenu></ClientMenu>
     <div class="ClientContainer">
-      <ClientSummary></ClientSummary>
       <router-view></router-view>
     </div>
   </div>
@@ -19,6 +18,8 @@ import ClientSummary from "./components/ClientSummary.vue";
   display: flex;
 }
 .ClientContainer {
-  padding: 3.125rem 3.125rem;
+  width: 100%;
+  padding: 3.125rem;
+  border-left: 0.0625rem solid #cecece;
 }
 </style>

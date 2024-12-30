@@ -12,10 +12,9 @@ import Products from "../pages/product/Products.vue";
 import Mypage from "../pages/mypage/Mypage.vue";
 import Client from "../pages/mypage/client/Client.vue";
 import Seller from "../pages/mypage/seller/Seller.vue";
-import ClientOrder from "../pages/mypage/client/components/ClientOrder.vue";
-
 import { useMemberStore } from "../stores/useMemberStore";
-
+import ClientOrder from "../pages/mypage/client/ClientOrder.vue";
+import ClientOrderDetail from "../pages/mypage/client/ClientOrderDetail.vue"
 import ClientInfo from "../pages/mypage/client/ClientInfo.vue";
 import ClientStoreRez from "../pages/mypage/client/ClientStoreRez.vue";
 import ClientStorelike from "../pages/mypage/client/ClientStorelike.vue";
@@ -28,7 +27,8 @@ import ShippingRegister from "../pages/mypage/seller/ShippingRegister.vue";
 import ProductList from "../pages/mypage/seller/ProductList.vue";
 import ProductRegister from "../pages/mypage/seller/ProductRegister.vue";
 import OrderDetails from "../pages/mypage/seller/OrderDetails.vue";
-
+import Carts from "../pages/cart/Carts.vue";
+import CreateReview from "../pages/mypage/client/CreateReview.vue";
 
 const checkUserType = (from, to, next) => {
   // 고객인지 점주인지 확인 후 경로 이동
@@ -68,12 +68,15 @@ const routes = [
         path: "client",
         component: Client,
         children: [
+          { path: "orders", component: ClientOrder },
+          { path: "orders/:id", component: ClientOrderDetail },
           { path: "info", component: ClientInfo },
-          { path: "store_rez", component: ClientStoreRez },
-          { path: "store_like", component: ClientStorelike },
-          { path: "store_review", component: ClientStoreReview },
-          { path: "product_info", component: ClientProductInfo },
-          { path: "product_review", component: ClientProductsReview },
+          { path: "store/rsv", component: ClientStoreRez },
+          { path: "store/like", component: ClientStorelike },
+          { path: "store/review", component: ClientStoreReview },
+          { path: "product/info", component: ClientProductInfo },
+          { path: "product/review", component: ClientProductsReview },
+          { path: "product/review/create", component: CreateReview },
         ],
       },
       {
@@ -88,6 +91,7 @@ const routes = [
           { path: "pregister", component: ProductRegister }
         ],
       },
+      { path: "/carts", component: Carts },
     ],
   },
 ];
@@ -95,6 +99,10 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(),
   routes,
+  scrollBehavior(to, from, savedPosition) {
+    // 항상 최상단으로 이동
+    return { top: 0 };
+  },
 });
 
 export default router;

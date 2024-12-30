@@ -16,7 +16,7 @@ export const useProductsStore = defineStore("products", {
   actions: {
     async getProductBestList() {
       const response = await axios.get(
-        "https://1846f82f-744f-4069-b790-aea1f893e984.mock.pstmn.io/productBest"
+        "https://02bbbbe3-c971-4a76-b853-6bbbc83b2afd.mock.pstmn.io/productBest"
       );
 
       this.productsBest = response.data;

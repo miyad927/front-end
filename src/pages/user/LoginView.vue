@@ -1,6 +1,8 @@
 <script setup>
 import { ref } from "vue";
 import { useMemberStore } from "../../stores/useMemberStore";
+import { useRouter } from "vue-router";
+const router = useRouter();
 const memberStore = useMemberStore();
 const loginData = ref({
   id: "",
@@ -8,8 +10,7 @@ const loginData = ref({
 });
 
 const login = async () => {
-  const result = await memberStore.login(loginData.value);
-  console.log(result);
+  await memberStore.login(loginData.value);
 };
 </script>
 <template>

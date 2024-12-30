@@ -1,6 +1,5 @@
 <script setup>
 import ClientMenu from "./components/ClientMenu.vue";
-import ClientSummary from "./components/ClientSummary.vue";
 </script>
 
 <template>
@@ -20,5 +19,6 @@ import ClientSummary from "./components/ClientSummary.vue";
 .ClientContainer {
   padding: 3.125rem;
   width: 100%;
+  border-left: 0.0625rem solid #cecece;
 }
 </style>

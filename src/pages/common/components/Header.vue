@@ -1,13 +1,30 @@
-<script setup></script>
+<script setup>
+import { useMemberStore } from "../../../stores/useMemberStore";
+const memberStore = useMemberStore();
+
+const logout = () => {
+  memberStore.logout();
+};
+
+const mypage = "/mypage/" + sessionStorage.getItem("UserType");
+const loginStatus = sessionStorage.getItem("LOGIN");
+</script>
 
 <template>
   <header>
     <div class="inner_wrap">
       <div class="top_login">
-        <div><router-link to="/login">로그인</router-link></div>
-        <div><router-link to="/join">회원가입</router-link></div>
+        <div v-if="!loginStatus">
+          <router-link to="/login">로그인</router-link>
+        </div>
+        <div v-if="loginStatus" @click="logout" class="pointer">로그아웃</div>
+        <div v-if="!loginStatus">
+          <router-link to="/join">회원가입</router-link>
+        </div>
         <div><router-link to="/">주문조회</router-link></div>
-        <div><router-link to="/mypage">마이페이지</router-link></div>
+        <div v-if="loginStatus">
+          <router-link :to="mypage">마이페이지</router-link>
+        </div>
       </div>
       <div class="search_area">
         <div class="logo"><router-link to="/">Eatzzy</router-link></div>
@@ -68,8 +85,8 @@
         </div>
         <div class="util_menu">
           <ul>
-            <li class="join_btn">
-              <router-link to="/">마이페이지</router-link>
+            <li class="join_btn" v-if="loginStatus">
+              <router-link :to="mypage">마이페이지</router-link>
             </li>
             <li class="cart_btn">
               <router-link to="/carts"

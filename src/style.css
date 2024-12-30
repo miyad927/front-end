@@ -421,6 +421,10 @@ input[type="submit"] {
   display: none;
 }
 
+.pointer {
+  cursor: pointer;
+}
+
 @media (max-width: 768px) {
   .inner_wrap {
     min-width: 92%;

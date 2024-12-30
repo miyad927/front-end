@@ -13,26 +13,39 @@ const fetchLikes = async () => {
     console.error("리뷰 데이터를 가져오는 중 오류 발생:", error);
   }
 };
+const handleCancelClick = (likeId) => {
+  // JavaScript 기본 confirm 대화상자 표시
+  const isConfirmed = confirm("정말로 좋아요 항목에서 삭제할까요?");
+  if (isConfirmed) {
+    alert("삭제되었습니다."); // 확인 시 동작
+    // 실제 취소 로직을 여기에 추가 가능
+    // 예: API 호출 후 목록 갱신
+  }
+};
+const moveClick = (likeId) => {
+  // JavaScript 기본 confirm 대화상자 표시
+  location.href = "/stores/1";
+};
 onMounted(fetchLikes);
 </script>
 
 <template>
   <tr v-for="(like, index) in likes" :key="index">
     <td>
-      <div class="likeStore_info">
+      <a href="/stores/1" class="likeStore_info">
         <img src="https://thenaum.cdn-nhncommerce.com/data/goods/15/01/26/1000000463/1000000463_magnify_07.jpg" />
         <div>
           <div class="likeStore_name">{{ like.store_name }}</div>
         </div>
-      </div>
+      </a>
     </td>
     <td class="address">{{ like.store_address }}</td>
     <td>
       <span class="phone">{{ like.call_number }}</span>
     </td>
     <td class="likeStore_buttons">
-      <button>예약하기</button>
-      <button class="delete">삭제하기</button>
+      <button @click="moveClick(like.id)">예약하기</button>
+      <button class="delete" @click="handleCancelClick(like.id)">삭제하기</button>
     </td>
   </tr>
 </template>
@@ -85,7 +98,6 @@ onMounted(fetchLikes);
 tr,
 td {
   border-top: 0.0625rem solid #cecece;
-  border-bottom: 0.0625rem solid #cecece;
   padding: 1.875rem;
   text-align: center;
   vertical-align: middle;

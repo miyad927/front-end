@@ -3,27 +3,27 @@ import { ref, onMounted } from "vue";
 import axios from "axios";
 
 const userId = 1;
-const apiUrl = `https://abc5b35f-117e-49a2-9442-364017e60701.mock.pstmn.io/my/breview/stores/?userId=${userId}`;
-const Breviews = ref([]);
-const fetchBReviews = async () => {
+const apiUrl = `https://abc5b35f-117e-49a2-9442-364017e60701.mock.pstmn.io/my/breview/products/?userId=${userId}`;
+const PBreviews = ref([]);
+const fetchPBReviews = async () => {
   try {
     const response = await axios.get(apiUrl);
-    Breviews.value = response.data.stores;
+    PBreviews.value = response.data.products;
   } catch (error) {
     console.error("리뷰 데이터를 가져오는 중 오류 발생:", error);
   }
 };
-onMounted(fetchBReviews);
+onMounted(fetchPBReviews);
 </script>
 
 <template>
-  <div class="review_item" v-for="(Breview, index) in Breviews" :key="index">
-    <a href="/stores/1" class="review_left">
-      <div class="review_itemName">{{ Breview.store_name }}</div>
+  <div class="review_item" v-for="(PBreview, index) in PBreviews" :key="index">
+    <a href="/products/1" class="review_left">
+      <div class="review_itemName">{{ PBreview.product_name }}</div>
       <img src="https://thenaum.cdn-nhncommerce.com/data/goods/15/01/26/1000000463/1000000463_magnify_07.jpg" alt="Review Image" class="review_image" />
     </a>
     <div class="review_right notYet_right">
-      <div class="review_date">{{ Breview.reservation }}</div>
+      <div class="review_date">{{ PBreview.purchase }}</div>
       <button class="review_button">리뷰 쓰러 가기</button>
     </div>
   </div>

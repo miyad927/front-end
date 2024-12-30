@@ -13,19 +13,32 @@ const fetchRezs = async () => {
     console.error("리뷰 데이터를 가져오는 중 오류 발생:", error);
   }
 };
+const handleCancelClick = (reviewId) => {
+  // JavaScript 기본 confirm 대화상자 표시
+  const isConfirmed = confirm("정말로 예약을 취소하시겠습니까?");
+  if (isConfirmed) {
+    alert("예약이 취소되었습니다."); // 확인 시 동작
+    // 실제 취소 로직을 여기에 추가 가능
+    // 예: API 호출 후 목록 갱신
+  }
+};
+
 onMounted(fetchRezs);
 </script>
 
 <template>
   <div class="storeRez_item" v-for="(review, index) in rezs" :key="index">
-    <div class="storeRez_left">
+    <a class="storeRez_left" href="/stores/1">
       <div class="store_name">{{ review.store_name }}</div>
-      <div class="review_category store_address">{{ review.store_address }}</div>
+      <div class="rez_category store_address">{{ review.store_address }}</div>
       <img src="https://thenaum.cdn-nhncommerce.com/data/goods/15/01/26/1000000463/1000000463_magnify_07.jpg" alt="Review Image" class="review_image" />
-    </div>
+    </a>
     <div class="storeRez_right notYet_right">
-      <div class="review_date">{{ review.reservation }}</div>
-      <button class="review_button">예약 취소하기</button>
+      <div>
+        <div class="rez_date">{{ review.reservation }}</div>
+        <div class="rez_time">{{ review.rez_time }}</div>
+      </div>
+      <button class="rez_button" @click="handleCancelClick(review.id)">예약 취소하기</button>
     </div>
   </div>
 </template>
@@ -34,7 +47,7 @@ onMounted(fetchRezs);
 .storeRez_item {
   display: flex;
   border-bottom: 0.0625rem solid #ddd;
-  padding: 1.875rem 0;
+  padding: 20px;
 }
 .storeRez_left {
   flex: 7;
@@ -44,7 +57,7 @@ onMounted(fetchRezs);
   font-size: 1.25rem;
   margin-bottom: 0.3125rem;
 }
-.review_category {
+.rez_category {
   font-size: 1.125rem;
 }
 .store_address {
@@ -70,14 +83,18 @@ onMounted(fetchRezs);
   justify-content: space-between;
   align-items: flex-start;
 }
-.review_date {
+.rez_date {
+  font-size: 1.25rem;
+}
+.rez_time {
   font-size: 0.9375rem;
   margin-bottom: 0.9375rem;
 }
-.review_button {
+.rez_button {
   padding: 0.625rem;
   background-color: #ff7400;
   border-radius: 0.25rem;
   color: white;
+  cursor: pointer;
 }
 </style>

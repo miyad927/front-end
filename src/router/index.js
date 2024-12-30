@@ -12,17 +12,23 @@ import Products from "../pages/product/Products.vue";
 import Mypage from "../pages/mypage/Mypage.vue";
 import Client from "../pages/mypage/client/Client.vue";
 import Seller from "../pages/mypage/seller/Seller.vue";
+import { useMemberStore } from "../stores/useMemberStore";
 import ClientOrder from "../pages/mypage/client/ClientOrder.vue";
-import ClientOrderDetail from "../pages/mypage/client/ClientOrderDetail.vue";
+import ClientOrderDetail from "../pages/mypage/client/ClientOrderDetail.vue"
 import ClientInfo from "../pages/mypage/client/ClientInfo.vue";
 import ClientStoreRez from "../pages/mypage/client/ClientStoreRez.vue";
 import ClientStorelike from "../pages/mypage/client/ClientStorelike.vue";
 import ClientStoreReview from "../pages/mypage/client/ClientStoreReview.vue";
 import ClientProductInfo from "../pages/mypage/client/ClientProductInfo.vue";
 import ClientProductsReview from "../pages/mypage/client/ClientProductsReview.vue";
+import ProductModify from "../pages/mypage/seller/ProductModify.vue";
+import ProductOrder from "../pages/mypage/seller/ProductOrder.vue";
+import ShippingRegister from "../pages/mypage/seller/ShippingRegister.vue";
+import ProductList from "../pages/mypage/seller/ProductList.vue";
+import ProductRegister from "../pages/mypage/seller/ProductRegister.vue";
+import OrderDetails from "../pages/mypage/seller/OrderDetails.vue";
 import Carts from "../pages/cart/Carts.vue";
 import CreateReview from "../pages/mypage/client/CreateReview.vue";
-import { useMemberStore } from "../stores/useMemberStore";
 
 import SellerInsertMenu from "../pages/mypage/seller/SellerInsertMenu.vue";
 import SellerInsertStore from "../pages/mypage/seller/SellerInsertStore.vue";
@@ -90,9 +96,14 @@ const routes = [
           { path: "seller_rsv", component: SellerReservationCard },
           { path: "seller_store", component: SellerStoreItem },
           { path: "store_modify", component: SellerModifyStore },
+          { path: "order", component: ProductOrder },
+          { path: "order/:id", component: OrderDetails},
+          { path: "modify", component: ProductModify },
+          { path: "sregister", component: ShippingRegister },
+          { path: "product", component: ProductList },
+          { path: "pregister", component: ProductRegister }
         ],
       },
-      { path: "seller", component: Seller },
       { path: "/carts", component: Carts },
     ],
   },

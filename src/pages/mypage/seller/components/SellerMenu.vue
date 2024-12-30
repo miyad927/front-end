@@ -22,11 +22,12 @@
       <li>
         상품
         <ul class="eachList">
-          <router-link to="/mypage/seller"><li>- 상품 등록</li></router-link>
-          <router-link to="/mypage/seller"><li>- 내가 등록한 상품 조회</li></router-link>
-          <router-link to="/mypage/seller"><li>- 상품 수정/삭제</li></router-link>
-          <router-link to="/mypage/seller"><li>- 주문 내역 확인</li></router-link>
-          <router-link to="/mypage/seller"><li>- 배송 등록</li></router-link>
+          <router-link to="/mypage/seller/pregister"><li>- 상품 등록</li></router-link>
+          <router-link to="/mypage/seller/product"><li>- 내가 등록한 상품 조회</li></router-link>
+          <router-link to="/mypage/seller/modify"><li>- 상품 수정</li></router-link>
+          <router-link to="/mypage/seller/order"><li>- 주문 내역 확인</li></router-link>
+          <router-link to="/mypage/seller/sregister"><li>- 배송 등록</li></router-link>
+          
         </ul>
       </li>
     </ul>

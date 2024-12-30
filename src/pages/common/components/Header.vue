@@ -1,10 +1,20 @@
-<script setup></script>
+<script setup>
+import { useMemberStore } from "../../../stores/useMemberStore";
+const memberStore = useMemberStore();
+
+const logout = () => {
+  memberStore.logout();
+};
+</script>
 
 <template>
   <header>
     <div class="inner_wrap">
       <div class="top_login">
-        <div><router-link to="/login">로그인</router-link></div>
+        <div v-if="!memberStore.isLogin">
+          <router-link to="/login">로그인</router-link>
+        </div>
+        <div v-else @click="logout" class="pointer">로그아웃</div>
         <div><router-link to="/join">회원가입</router-link></div>
         <div><router-link to="/">주문조회</router-link></div>
         <div><router-link to="/mypage">마이페이지</router-link></div>

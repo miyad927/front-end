@@ -72,7 +72,7 @@
               <router-link to="/">마이페이지</router-link>
             </li>
             <li class="cart_btn">
-              <router-link to="/"
+              <router-link to="/carts"
                 ><span class="num">0</span>장바구니</router-link
               >
             </li>

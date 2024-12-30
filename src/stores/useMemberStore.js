@@ -2,12 +2,12 @@ import { defineStore } from "pinia";
 import axios from "axios";
 
 export const useMemberStore = defineStore("member", {
-  state: () => ({ isLogin: false }),
+  state: () => ({}),
   persist: {
     storage: sessionStorage,
   },
   actions: {
-    async login(userData = null) {
+    async login(userData) {
       let response;
 
       if (userData) {
@@ -19,10 +19,12 @@ export const useMemberStore = defineStore("member", {
 
         if (response.data.isLogin) {
           const cookieValue = this.getCookie("LOGIN");
+          const userTypeValue = userData.id === "seller" ? "seller" : "client";
           if (cookieValue) {
             sessionStorage.setItem("LOGIN", cookieValue);
-            this.isLogin = true;
+            sessionStorage.setItem("UserType", userTypeValue);
             alert("로그인 되었습니다.");
+            window.location.href = "/";
           }
         }
       }
@@ -42,11 +44,12 @@ export const useMemberStore = defineStore("member", {
     },
 
     logout() {
-      this.isLogin = false;
       sessionStorage.removeItem("LOGIN");
+      sessionStorage.removeItem("UserType");
       document.cookie =
         "LOGIN=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
       alert("로그아웃 되었습니다.");
+      window.location.href = "/";
     },
   },
 });

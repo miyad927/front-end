@@ -446,6 +446,7 @@
                             title="감소"
                             value="dn^|^0"
                             id="tMinusBtn"
+                            @click="substactCart"
                           >
                             감소
                           </button>
@@ -455,7 +456,7 @@
                             name="goodsCnt[]"
                             class="goodsCnt_0"
                             title="수량"
-                            value="2"
+                            v-model.number="productCnt"
                             data-min-order="1"
                             data-key="0"
                             data-value="1"
@@ -463,7 +464,6 @@
                             data-max-order="0"
                             data-sales-unit="1"
                             data-stock-fl="n"
-                            onchange="goodsViewController.input_count_change(this, '1');return false;"
                           />
                           <button
                             type="button"
@@ -471,6 +471,7 @@
                             title="증가"
                             value="up^|^0"
                             id="tPlusBtn"
+                            @click="addCart"
                           >
                             증가
                           </button>
@@ -515,7 +516,9 @@
               <div class="total_wrap">
                 <!-- 최종 가격 -->
                 <div class="total_price_wrap">
-                  <span>총 </span><strong class="total_price"> 7,900</strong
+                  <span>총 </span
+                  ><strong class="total_price">
+                    {{ productStore.product.price * productCnt }}</strong
                   ><span>원</span>
                 </div>
                 <!-- //최종 가격 -->
@@ -798,10 +801,14 @@
               </p>
             </div>
             <div class="btn_box">
-              <button class="btn_cancel"><span>취소</span></button>
-              <button class="btn_confirm btn_move_cart">
-                <span>확인</span>
+              <button @click="closeModal" class="btn_cancel">
+                <span>취소</span>
               </button>
+              <router-link to="/carts">
+                <button class="btn_confirm btn_move_cart">
+                  <span>확인</span>
+                </button>
+              </router-link>
             </div>
             <button
               @click="closeModal"
@@ -827,6 +834,18 @@ const productStore = useProductsStore();
 const route = useRoute();
 const productId = route.params.id;
 const isModal = ref(false);
+const productCnt = ref(1);
+
+const addCart = () => {
+  productCnt.value = productCnt.value + 1;
+};
+
+const substactCart = () => {
+  if (productCnt.value == 1) {
+    alert("상품은 1개 이상 장바구니에 담을 수 있습니다.");
+    return;
+  } else productCnt.value = productCnt.value - 1;
+};
 
 const openModal = () => {
   isModal.value = true;

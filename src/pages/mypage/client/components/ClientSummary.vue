@@ -35,8 +35,8 @@
 .user_info {
   display: flex;
   width: 43.75rem;
-  height: 140px;
-  padding: 18px 0px 18px 18px;
+  height: 8.75rem;
+  padding: 1.125rem 0rem 1.125rem 1.125rem;
   border-radius: 0.625rem;
   background-color: #fafafa;
 }
@@ -50,27 +50,27 @@
   display: flex;
   align-items: center;
   flex: 1;
-  font-size: 20px;
+  font-size: 1.25rem;
 }
 .info_type {
   display: flex;
   align-items: center;
   flex: 1;
-  font-size: 20px;
+  font-size: 1.25rem;
 }
 .change_buttonDiv {
   display: flex;
   flex: 1;
   align-items: center;
   justify-content: flex-end;
-  padding-right: 50px;
+  padding-right: 3.125rem;
 }
 .change_button {
-  font-size: 18px;
-  padding: 0 12px;
+  font-size: 1.125rem;
+  padding: 0 0.75rem;
   background-color: #fff;
-  border-radius: 4px;
-  border: 1px solid #d9d9d9;
+  border-radius: 0.25rem;
+  border: 0.0625rem solid #d9d9d9;
 }
 .info02 {
   width: 50%;
@@ -88,19 +88,19 @@
   justify-content: center;
   width: 50%;
   height: 100%;
-  gap: 10px;
+  gap: 0.625rem;
 }
 
 .info_ul li:first-child {
-  border-left: 0.0625rem solid #cecece;
-  border-right: 0.0625rem solid #cecece;
+  border-left: 1px solid #cecece;
+  border-right: 1px solid #cecece;
 }
 
 .li_line01 {
-  font-size: 20px;
+  font-size: 1.25rem;
 }
 
 .li_line02 {
-  font-size: 20px;
+  font-size: 1.25rem;
 }
 </style>

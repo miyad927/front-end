@@ -9,6 +9,34 @@ const btnNextStep = () => {
   router.push("/join_form");
 };
 </script>
+<script>
+export default {
+  data() {
+    return {
+      checkedItems: {
+        termsAgree1: false,
+        termsAgree2: false,
+        termsAgree3: false,
+        termsAgree4: false,
+        termsAgree5: false,
+        termsAgree6: false,
+      },
+    };
+  },
+  methods: {
+    checkAll(event) {
+      const isChecked = event.target.checked;
+
+      // "termsAgree"로 시작하는 모든 체크박스 상태 변경
+      Object.keys(this.checkedItems).forEach((key) => {
+        if (key.startsWith("termsAgree")) {
+          this.checkedItems[key] = isChecked;
+        }
+      });
+    },
+  },
+};
+</script>
 <template>
   <div class="container">
     <div class="main">
@@ -16,13 +44,13 @@ const btnNextStep = () => {
         <ol>
           <li class="page_on">
             <span>01</span> 약관동의<img
-              src="https://thenaum.cdn-nhncommerce.com/data/skin/front/moment/img/member/icon_join_step_on.png"
+              src="../../assets/icons/icon_join_step_off.png"
               alt=""
             />
           </li>
           <li>
             <span>02</span> 정보입력<img
-              src="https://thenaum.cdn-nhncommerce.com/data/skin/front/moment/img/member/icon_join_step_off.png"
+              src="../../assets/icons/icon_join_step_off.png"
               alt=""
             />
           </li>
@@ -37,7 +65,7 @@ const btnNextStep = () => {
           <label class="check" for="allAgree">
             <div class="join_agreement_box agree_all">
               <div class="form_element">
-                <input type="checkbox" id="allAgree" />
+                <input type="checkbox" id="allAgree" @change="checkAll" />
                 <label class="check" for="allAgree">
                   <em
                     >Eatzzy의 모든 약관을 확인하고 전체 동의합니다.&nbsp;</em
@@ -57,6 +85,7 @@ const btnNextStep = () => {
                     id="termsAgree1"
                     name="agreementInfoFl"
                     class="require"
+                    v-model="checkedItems.termsAgree1"
                   />
                   <label class="check_s" for="termsAgree1"
                     >이용약관 <strong>(필수)</strong></label
@@ -1187,6 +1216,7 @@ const btnNextStep = () => {
                     id="termsAgree2"
                     name="privateApprovalFl"
                     class="require"
+                    v-model="checkedItems.termsAgree2"
                   />
                   <label class="check_s" for="termsAgree2"
                     >개인정보 수집 및 이용 <strong>(필수)</strong></label
@@ -1246,11 +1276,12 @@ const btnNextStep = () => {
                 <div class="form_element">
                   <input
                     type="checkbox"
-                    id="termsAgree6"
-                    name="consignmentSalesFl"
+                    id="termsAgree3"
+                    name="termsAgree3"
                     class="require"
+                    v-model="checkedItems.termsAgree3"
                   />
-                  <label class="check_s" for="termsAgree6"
+                  <label class="check_s" for="termsAgree3"
                     >위탁판매 약관 <strong>(필수)</strong></label
                   >
                 </div>
@@ -1267,8 +1298,13 @@ const btnNextStep = () => {
               <!--  -->
               <div class="join_agreement_box js_terms_view">
                 <div class="form_element" style="border-bottom: none">
-                  <input type="checkbox" id="termsAgree3" name="" />
-                  <label class="check_s" for="termsAgree3"
+                  <input
+                    type="checkbox"
+                    id="termsAgree4"
+                    name=""
+                    v-model="checkedItems.termsAgree4"
+                  />
+                  <label class="check_s" for="termsAgree4"
                     >쇼핑정보 수집 및 이용
                     <strong class="choice" style="color: #222"
                       >(선택)</strong
@@ -1299,10 +1335,11 @@ const btnNextStep = () => {
                           <div class="form_element">
                             <input
                               type="checkbox"
-                              id="privateApprovalOption_7"
-                              name="privateApprovalOptionFl[7]"
+                              id="termsAgree5"
+                              name="termsAgree5"
+                              v-model="checkedItems.termsAgree5"
                             />
-                            <label class="check_s" for="privateApprovalOption_7"
+                            <label class="check_s" for="termsAgree5"
                               >선택</label
                             >
                           </div>
@@ -1345,12 +1382,11 @@ const btnNextStep = () => {
                           <div class="form_element">
                             <input
                               type="checkbox"
-                              id="privateApprovalOption_269"
-                              name="privateApprovalOptionFl[269]"
+                              id="termsAgree6"
+                              name="termsAgree6"
+                              v-model="checkedItems.termsAgree6"
                             />
-                            <label
-                              class="check_s"
-                              for="privateApprovalOption_269"
+                            <label class="check_s" for="termsAgree6"
                               >선택</label
                             >
                           </div>
@@ -1397,7 +1433,7 @@ const btnNextStep = () => {
   </div>
 </template>
 <style scoped>
-.main {
+.container .main {
   width: 50%;
   min-width: 37.5rem;
   margin: 0 auto;
@@ -1623,6 +1659,7 @@ const btnNextStep = () => {
 .join_agreement_cont .agreement_choice_box table th:first-child,
 .join_agreement_cont .agreement_choice_box table td:first-child {
   border-left: none;
+  min-width: 3.125rem;
 }
 
 .join_agreement_cont .agreement_choice_box table td {
@@ -1708,10 +1745,10 @@ const btnNextStep = () => {
   color: #fff;
 }
 
-@media (max-width: 60rem) {
+@media (max-width: 600px) {
   .main {
-    min-width: 400px;
-    max-width: 560px;
+    width: 90% !important;
+    min-width: unset !important;
   }
 }
 </style>

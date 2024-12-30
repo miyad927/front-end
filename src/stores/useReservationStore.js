@@ -9,7 +9,7 @@ export const useReservationStore = defineStore("reservation", {
   actions: {
     async reservation(rsvData) {
       const response = await axios.post(
-        "https://2deee6c7-ce64-440b-80cd-b66969cb5b6e.mock.pstmn.io/reservation",
+        "https://run.mocky.io/v3/1d5b480c-87a9-4ff1-b001-a8a2b951eab0",
         rsvData
       );
       return response.data;

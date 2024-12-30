@@ -1,11 +1,22 @@
 <script setup>
-import { defineProps } from "vue";
+import { defineProps, defineEmits } from "vue";
 const props = defineProps({
   product: {
     type: Object,
     required: true,
   },
+  isModal: {
+    type: Boolean, // `v-model` 값 정의
+    required: true,
+  },
 });
+const emit = defineEmits(["update:isModal"]);
+
+const openModal = () => {
+  emit("update:isModal", true); // 부모에게 isModal 값을 true로 전달
+};
+
+// export { isModal }; // 부모가 이 값을 참조할 수 있도록 내보냄
 </script>
 <template>
   <div class="list">
@@ -37,6 +48,7 @@ const props = defineProps({
           </div>
           <!-- 장바구니 버튼 -->
           <button
+            @click="openModal"
             type="button"
             href="#optionViewLayer"
             class="n_list_cart btn_add_cart btn_open_layer list_basket_cart"

@@ -126,7 +126,6 @@
 </template>
 
 <script setup>
-import { defineProps } from "vue";
 import { ref } from "vue";
 //emit 추가! 부모 컴포넌트로 현재 컴포넌트가 체크 리스트에 포함 되는지 그 정보를 emit 로 전달!
 const checked = ref(true);

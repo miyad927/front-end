@@ -21,6 +21,13 @@ import ClientStoreReview from "../pages/mypage/client/ClientStoreReview.vue";
 import ClientProductInfo from "../pages/mypage/client/ClientProductInfo.vue";
 import ClientProductsReview from "../pages/mypage/client/ClientProductsReview.vue";
 
+import SellerInsertMenu from "../pages/mypage/seller/SellerInsertMenu.vue";
+import SellerInsertStore from "../pages/mypage/seller/SellerInsertStore.vue";
+import SellerMyInfoModify from "../pages/mypage/seller/SellerMyInfoModify.vue";
+import SellerReservationCard from "../pages/mypage/seller/SellerReservationCard.vue";
+import SellerStoreItem from "../pages/mypage/seller/SellerStoreItem.vue";
+import SellerModifyStore from "../pages/mypage/seller/SellerModifyStore.vue";
+
 const checkUserType = (from, to, next) => {
   // 고객인지 점주인지 확인 후 경로 이동
   const userType = false;
@@ -68,7 +75,18 @@ const routes = [
           { path: "product_review", component: ClientProductsReview },
         ],
       },
-      { path: "seller", component: Seller },
+      {
+        path: "seller",
+        component: Seller,
+        children: [
+          { path: "insert_menu", component: SellerInsertMenu },
+          { path: "insert_store", component: SellerInsertStore },
+          { path: "myinfo_modify", component: SellerMyInfoModify },
+          { path: "seller_rsv", component: SellerReservationCard },
+          { path: "seller_store", component: SellerStoreItem },
+          { path: "store_modify", component: SellerModifyStore },
+        ],
+      },
     ],
   },
 ];

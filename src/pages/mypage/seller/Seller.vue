@@ -17,6 +17,7 @@ import SellerMenu from "./components/SellerMenu.vue";
   display: flex;
 }
 .SellerContainer {
+  width: 100%;
   padding: 3.125rem 3.125rem;
 }
 </style>

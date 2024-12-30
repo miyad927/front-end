@@ -55,6 +55,13 @@ export const useStoresStore = defineStore("stores", {
       return response.data;
     },
 
+    async getSellerStoresList() {
+      const response = await axios.get(
+        "https://28953cd5-1d7d-4987-b0bd-d7c0dc5512be.mock.pstmn.io/storeitem"
+      );
+      this.stores = response.data;
+    },
+
     setStoreTab(tab) {
       this.storeTab = tab;
     },

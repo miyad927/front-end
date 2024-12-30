@@ -10,11 +10,7 @@ const loginData = ref({
 });
 
 const login = async () => {
-  const result = await memberStore.login(loginData.value);
-  console.log(result);
-  if (result.isLogin) {
-    router.push("/");
-  }
+  await memberStore.login(loginData.value);
 };
 </script>
 <template>

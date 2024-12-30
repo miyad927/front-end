@@ -1,31 +1,33 @@
 <script setup></script>
 
 <template>
-  <div class="menu_wrap">
-    <h2><a href="/mypage/index.php">마이페이지</a></h2>
-    <ul class="menuLists">
-      <li>
-        내 정보
-        <ul class="eachList">
-          <router-link to="/mypage/client/info"><li>- 내정보 수정</li></router-link>
-        </ul>
-      </li>
-      <li>
-        식당
-        <ul class="eachList">
-          <router-link to="/mypage/client/store_rez"><li>- 식당 예약 내역</li></router-link>
-          <router-link to="/mypage/client/store_like"><li>- 좋아요 한 식당</li></router-link>
-          <router-link to="/mypage/client/store_review"><li>- 식당 리뷰</li></router-link>
-        </ul>
-      </li>
-      <li>
-        상품
-        <ul class="eachList">
-          <router-link to="/mypage/client/product_info"><li>- 상품 주문 내역</li></router-link>
-          <router-link to="/mypage/client/product_review"><li>- 상품 배송 리뷰</li></router-link>
-        </ul>
-      </li>
-    </ul>
+  <div>
+    <div class="menu_wrap">
+      <h2><a href="/mypage/index.php">마이페이지</a></h2>
+      <ul class="menuLists">
+        <li>
+          내 정보
+          <ul class="eachList">
+            <router-link to="/mypage/client/info"><li>- 내정보 수정</li></router-link>
+          </ul>
+        </li>
+        <li>
+          식당
+          <ul class="eachList">
+            <router-link to="/mypage/client/store_rez"><li>- 식당 예약 내역</li></router-link>
+            <router-link to="/mypage/client/store_like"><li>- 좋아요 한 식당</li></router-link>
+            <router-link to="/mypage/client/store_review"><li>- 식당 리뷰</li></router-link>
+          </ul>
+        </li>
+        <li>
+          상품
+          <ul class="eachList">
+            <router-link to="/mypage/client/product_info"><li>- 상품 주문 내역</li></router-link>
+            <router-link to="/mypage/client/product_review"><li>- 상품 배송 리뷰</li></router-link>
+          </ul>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -44,13 +46,13 @@ ul li {
 }
 
 .menu_wrap {
+  position: sticky;
+  top: 0; /* 스크롤 시 상단에 고정 */
   padding: 3.125rem 0;
   letter-spacing: -0.02em;
-  min-width: 12rem;
+  min-width: 10.75rem;
   box-sizing: border-box;
-  display: block;
-  unicode-bidi: isolate;
-  border-right: 0.0625rem solid #cecece;
+  z-index: 1000; /* 다른 요소 위로 보이도록 설정 */
 }
 
 .menu_wrap .menuLists {

@@ -7,7 +7,6 @@ import ClientSummary from "./components/ClientSummary.vue";
   <div class="main">
     <ClientMenu></ClientMenu>
     <div class="ClientContainer">
-      <ClientSummary></ClientSummary>
       <router-view></router-view>
     </div>
   </div>

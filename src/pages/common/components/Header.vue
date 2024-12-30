@@ -85,7 +85,7 @@ const loginStatus = sessionStorage.getItem("LOGIN");
         </div>
         <div class="util_menu">
           <ul>
-            <li class="join_btn">
+            <li class="join_btn" v-if="loginStatus">
               <router-link :to="mypage">마이페이지</router-link>
             </li>
             <li class="cart_btn">

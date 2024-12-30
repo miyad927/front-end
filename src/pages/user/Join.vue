@@ -19,7 +19,7 @@
         </div>
         <div class="member_cont">
           <div class="member_login_box">
-            <a
+            <!-- <a
               href="#"
               class="js_btn_kakao_login"
               data-kakao-type="join_method"
@@ -36,9 +36,9 @@
                 src="https://thenaum.cdn-nhncommerce.com/data/img/allnew/layout/arrow_right_b.svg"
                 class="right_arrow"
               />
-            </a>
+            </a> -->
             <a
-              href="#"
+              href="/join_agreement"
               class="js_btn_naver_login"
               data-naver-type="join_method"
               data-naver-url=""

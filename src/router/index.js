@@ -13,14 +13,14 @@ import Mypage from "../pages/mypage/Mypage.vue";
 import Client from "../pages/mypage/client/Client.vue";
 import Seller from "../pages/mypage/seller/Seller.vue";
 import ClientOrder from "../pages/mypage/client/ClientOrder.vue";
-
+import ClientOrderDetail from "../pages/mypage/client/ClientOrderDetail.vue";
 import ClientInfo from "../pages/mypage/client/ClientInfo.vue";
 import ClientStoreRez from "../pages/mypage/client/ClientStoreRez.vue";
 import ClientStorelike from "../pages/mypage/client/ClientStorelike.vue";
 import ClientStoreReview from "../pages/mypage/client/ClientStoreReview.vue";
 import ClientProductInfo from "../pages/mypage/client/ClientProductInfo.vue";
 import ClientProductsReview from "../pages/mypage/client/ClientProductsReview.vue";
-
+import Carts from "../pages/cart/Carts.vue";
 
 const checkUserType = (from, to, next) => {
   // 고객인지 점주인지 확인 후 경로 이동
@@ -32,7 +32,6 @@ const checkUserType = (from, to, next) => {
 };
 
 import { useMemberStore } from "../stores/useMemberStore";
-import ClientOrderDetail from "../pages/mypage/client/ClientOrderDetail.vue";
 
 const checkLogin = async (from, to, next) => {
   const memberStore = useMemberStore();
@@ -75,6 +74,7 @@ const routes = [
         ],
       },
       { path: "seller", component: Seller },
+      {path:"/carts",component:Carts}
     ],
   },
 ];

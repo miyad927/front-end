@@ -1,9 +1,20 @@
-<script setup></script>
+<script setup>
+import { useProductsStore } from '../../../stores/useProductsStore';
+
+
+const productsStore = useProductsStore();
+const getOrderDetails = async () => {
+  const result = await productsStore.getOrderDetails();
+  console.log(result);
+}
+
+getOrderDetails();
+</script>
 
 <template>
-  <div class="container">
+  <div class="order_details">
     <h2>주문 상세 내역</h2>
-    <table class="order_details">
+    <table class="details_table">
       <tr>
         <th>이름</th>
         <td>홍길동</td>
@@ -25,8 +36,8 @@
         <td>2024-12-20</td>
       </tr>
     </table>
-    <div class="btn-container">
-      <a href="#" class="back_btn"><em>닫기</em></a>
+    <div class="btn_container">
+      <router-link to="/mypage/seller/order"class="back_btn">닫기</router-link>
     </div>
   </div>
 </template>
@@ -39,8 +50,8 @@ body {
   background-color: #f4f4f4;
 }
 
-.container {
-  width: 30%;
+.order_details {
+  width: 60%;
   max-width: 600px;
   margin: 30px auto;
   background-color: #fff;
@@ -51,38 +62,35 @@ body {
 
 h2 {
   font-size: 2rem;
-  margin-bottom: 80px;
+  margin-bottom: 40px;
   color: #00a7b3;
   text-align: center;
-  margin-top: 30px;
 }
 
-.order_details {
-  width: 90%;
+.details_table {
+  width: 100%;
   border-collapse: collapse;
   margin: 0 auto;
 }
 
-.order_details th,
-.order_details td {
+.details_table th,
+.details_table td {
   padding: 7px;
   text-align: left;
   border: 1px solid #ddd;
   font-size: 15px;
 }
 
-.order_details th {
+.details_table th {
   background-color: #83a2a5;
   color: white;
-  font-size: 15px;
 }
 
-.order_details td {
+.details_table td {
   color: #070707;
-  font-size: 15px;
 }
 
-.order_details tr:nth-child(even) {
+.details_table tr:nth-child(even) {
   background-color: #f9f9f9;
 }
 
@@ -96,16 +104,13 @@ h2 {
   margin-top: 20px;
   font-size: 16px;
   text-align: center;
-  
 }
 
 .back_btn:hover {
   background-color: #008a92;
 }
 
-
-.btn-container {
+.btn_container {
   text-align: center;
-  margin-top: 3px;
 }
 </style>

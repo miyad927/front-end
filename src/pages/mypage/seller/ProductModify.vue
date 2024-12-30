@@ -1,99 +1,100 @@
-<script setup></script>
+<script setup>
+import { ref } from 'vue';
+import { useProductsStore } from '../../../stores/useProductsStore';
+
+const productsStore = useProductsStore();
+const ModifyProduct = async () => {
+  const result = await productsStore.ModifyProduct();
+  console.log(result);
+}
+
+const modifyProudct = (event) => {
+  event.preventDefault();
+  const result = confirm("상품정보를 수정하시겠습니까?");
+  console.log(result);
+  if(result){
+    alert("수정되었습니다.");  
+  }
+};
+
+const modifyData = ref(
+{
+name: "", 
+price : 0, 
+stock : 0, 
+description: "", 
+image : ""
+} 
+);
+
+ModifyProduct();
+</script>
 
 <template>
-  <div class="container">
+  <div class="form_container">
     <h1>상품 수정</h1>
     <form>
       <div class="form_group">
-        <label for="product_name">상품명</label>
-        <input
-          type="text"
-          id="product_name"
-          name="product_name"
-          value=""
-          required
-        />
+        <label for="name">상품명</label>
+        <input v-model="modifyData.name" type="text" id="product_name" required />
       </div>
 
       <div class="form_group">
-        <label for="product_price">가격</label>
-        <input
-          type="number"
-          id="product_price"
-          name="product_price"
-          value=""
-          required
-        />
+        <label for="price">가격</label>
+        <input v-model="modifyData.price" type="number" id="product_price" required min="0" step="1000" />
       </div>
 
       <div class="form_group">
-        <label for="product_stock">재고</label>
-        <input
-          type="number"
-          id="product_stock"
-          name="product_stock"
-          value=""
-          required
-        />
+        <label for="stock">재고</label>
+        <input v-model="modifyData.stock" type="number" id="product_stock" required min="0" />
       </div>
 
       <div class="form_group">
-        <label for="product_description">상품 설명</label>
-        <textarea
-          id="product_descriptions"
-          name="product_descriptions"
-          required
-        ></textarea>
+        <label for="description">상품 설명</label>
+        <textarea v-model="modifyData.description" id="product_description" required></textarea>
       </div>
 
       <div class="form_group">
-        <label for="product_image">상품 이미지</label>
-        <input type="file" id="product_image" name="product_image" />
+        <label for="image">상품 이미지</label>
+        <input type="file" id="product_image" />
       </div>
 
       <div class="form_group buttons">
-        <button type="submit">수정하기</button>
-        <button type="button" class="cancel_btn">취소하기</button>
+        <button @click="modifyProudct" class="btn_modify">수정하기</button>
+        <router-link to="/mypage/seller/product" class="btn_cancel">취소하기</router-link>
       </div>
     </form>
   </div>
 </template>
 
 <style scoped>
-body {
-  font-family: 'Arial', sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f4f4f4;
-}
 
-.container {
+.form_container {
   width: 100%;
-  max-width: 400px;
-  margin: 50px auto;
+  max-width: 450px;
+  margin: 60px auto;
   background-color: #fff;
-  padding: 30px;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
   text-align: center;
   color: #00a7b3;
-  font-size: 2rem;
-  margin-bottom: 50px;
-  margin-top: 30px;
+  font-size: 2.2rem;
+  margin-bottom: 40px;
 }
 
 .form_group {
-  margin-bottom: 10px;
+  margin-bottom: 25px;
 }
 
 .form_group label {
   display: block;
   font-size: 16px;
   color: #333;
-  margin-bottom: 9px;
+  margin-bottom: 8px;
 }
 
 .form_group input,
@@ -101,66 +102,47 @@ h1 {
   width: 100%;
   padding: 12px;
   font-size: 15px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
   box-sizing: border-box;
-  transition: border-color 0.3s;
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
 
 .form_group input:focus,
 .form_group textarea:focus {
   border-color: #00a7b3;
   outline: none;
+  box-shadow: 0 0 8px rgba(0, 167, 179, 0.2);
 }
 
 .form_group textarea {
-  min-height: 110px;
+  min-height: 120px;
+  resize: vertical;
 }
 
 .buttons {
   display: flex;
-  justify-content: space-evenly;
-  gap: 15px;
+  justify-content: space-between;
+  gap: 20px;
 }
 
 button {
-  padding: 3px 18px;
+  padding: 12px 20px;
   background-color: #00a7b3;
   color: white;
   border: none;
-  border-radius: 6px;
-  font-size: 14px;
-  cursor: pointer;
-  margin-top: 12px;
-}
-
-.cancel_btn {
-  background-color: #00a7b3;
-}
-
-input[type="file"] {
-  padding: 6px 12px; 
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  background-color: #f9f9f9;
-  font-size: 14px; 
-}
-
-input[type="file"]:focus {
-  border-color: #00a7b3;
-  outline: none;
-}
-
-.form_group label {
+  border-radius: 8px;
   font-size: 16px;
-  margin-bottom: 10px;
+  cursor: pointer;
+  width: 100%;
+  max-width: 160px;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.3s;
 }
 
 button:hover {
   background-color: #008a92;
 }
 
-.cancel_btn:hover {
-  background-color: #008a92;
-}
 </style>

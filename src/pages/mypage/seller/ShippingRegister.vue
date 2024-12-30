@@ -1,11 +1,45 @@
-<script setup></script>
+<script setup>
+import { ref } from "vue";
+import { useProductsStore } from "../../../stores/useProductsStore";
+
+const productsStore = useProductsStore();
+const RegisterDelivery = async () => {
+  const result = await productsStore.RegisterDelivery();
+  console.log(result);
+};
+
+const registerDelivery = (event) => {
+  event.preventDefault();
+  const result = confirm("배송등록을 하시겠습니까?");
+  console.log(result);
+  if(result){
+    alert("배송등록되었습니다.");  
+  }
+};
+
+const deliveryData = ref({
+  courier_company: "",
+  tracking_number: 0,
+  order_id: "",
+});
+
+RegisterDelivery();
+
+
+
+</script>
 
 <template>
   <div class="container">
     <h2>배송 등록</h2>
     <div class="form_group">
       <label for="courier">택배사</label>
-      <select id="courier" name="courier" required>
+      <select
+        v-model="deliveryData.courier_company"
+        id="courier"
+        name="courier"
+        required
+      >
         <option value="CJ대한통운">CJ 대한통운</option>
         <option value="한진택배">한진택배</option>
         <option value="롯데택배">롯데택배</option>
@@ -16,6 +50,7 @@
     <div class="form_group">
       <label for="trackingNumber">운송장 번호</label>
       <input
+        v-model="deliveryData.tracking_number"
         type="text"
         id="trackingNumber"
         name="trackingNumber"
@@ -26,6 +61,7 @@
     <div class="form_group">
       <label for="orderNumber">주문 번호</label>
       <input
+        v-model="deliveryData.order_id"
         type="text"
         id="orderNumber"
         name="orderNumber"
@@ -33,9 +69,8 @@
         required
       />
     </div>
-    <div class="button_container">
-      <button type="submit" class="submit">등록하기</button>
-      <button type="button" class="back">돌아가기</button>
+    <div class="btn_container">
+      <button @click ="registerDelivery" class="btn_submit">등록하기</button>
     </div>
   </div>
 </template>
@@ -61,11 +96,11 @@ h2 {
   text-align: center;
   color: #00a7b3;
   font-size: 1.8rem;
-  margin-bottom: 40px;
+  margin-bottom: 60px;
 }
 
 .form_group {
-  margin-bottom: 18px;
+  margin-bottom: 15px;
 }
 
 label {
@@ -78,9 +113,9 @@ label {
 input[type="text"],
 select {
   width: 100%;
-  padding: 10px;
+  padding: 20px;
   font-size: 14px;
-  border: 1px solid #ddd;
+  border: 3px solid #ddd;
   border-radius: 6px;
   box-sizing: border-box;
   margin-bottom: 12px;
@@ -93,34 +128,28 @@ select:focus {
   outline: none;
 }
 
-button {
-  width: 48%;
-  padding: 12px;
-  font-size: 14px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
 
-button.submit, button.back {
+.btn_submit{
+  padding: 4px 30px;
   background-color: #00a7b3;
   color: white;
+  font-size: 16px;
+  border-radius: 6px;
 }
-button.submit:hover, button.back:hover {
+.btn_submit:hover{
   background-color: #008a92;
 }
 
-.button_container {
+.btn_container {
   display: flex;
   justify-content: space-between;
   gap: 12px;
   margin-top: 20px;
+  padding : 0 20px;
 }
 
 #courier {
-  height: 40px;
-  font-size: 14px;
-  border-radius: 6px;
+  padding: 10px 18px;
 }
+
 </style>

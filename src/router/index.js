@@ -13,7 +13,7 @@ import Mypage from "../pages/mypage/Mypage.vue";
 import Client from "../pages/mypage/client/Client.vue";
 import Seller from "../pages/mypage/seller/Seller.vue";
 import ClientOrder from "../pages/mypage/client/components/ClientOrder.vue";
-import ProductOrder from "../pages/mypage/seller/ProductOrder.vue";
+
 import { useMemberStore } from "../stores/useMemberStore";
 
 import ClientInfo from "../pages/mypage/client/ClientInfo.vue";
@@ -22,6 +22,13 @@ import ClientStorelike from "../pages/mypage/client/ClientStorelike.vue";
 import ClientStoreReview from "../pages/mypage/client/ClientStoreReview.vue";
 import ClientProductInfo from "../pages/mypage/client/ClientProductInfo.vue";
 import ClientProductsReview from "../pages/mypage/client/ClientProductsReview.vue";
+import ProductModify from "../pages/mypage/seller/ProductModify.vue";
+import ProductOrder from "../pages/mypage/seller/ProductOrder.vue";
+import ShippingRegister from "../pages/mypage/seller/ShippingRegister.vue";
+import ProductList from "../pages/mypage/seller/ProductList.vue";
+import ProductRegister from "../pages/mypage/seller/ProductRegister.vue";
+import OrderDetails from "../pages/mypage/seller/OrderDetails.vue";
+
 
 const checkUserType = (from, to, next) => {
   // 고객인지 점주인지 확인 후 경로 이동
@@ -73,8 +80,12 @@ const routes = [
         path: "seller",
         component: Seller,
         children: [
-          { path: "product", component: ProductOrder },
-          
+          { path: "order", component: ProductOrder },
+          { path: "order/:id", component: OrderDetails},
+          { path: "modify", component: ProductModify },
+          { path: "sregister", component: ShippingRegister },
+          { path: "product", component: ProductList },
+          { path: "pregister", component: ProductRegister }
         ],
       },
     ],

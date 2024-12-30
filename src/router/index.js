@@ -43,7 +43,6 @@ const checkLogin = async (from, to, next) => {
   next("/login");
 };
 
-
 const routes = [
   { path: "/", component: MainView },
   { path: "/stores", component: Stores },

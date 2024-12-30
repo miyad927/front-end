@@ -32,11 +32,15 @@ import ClinetLikes from "./components/ClientLikes.vue";
 }
 .like_table {
   width: 100%;
-  border-collapse: collapse;
+  border-radius: 1rem;
+  border: 1px solid #ccc;
+  padding: 1.5rem;
+  margin: 1rem 0;
 }
 
 table tr:first-child th {
   padding: 0.625rem;
+  font-size: 1.25rem;
 }
 .col1 {
   width: 20%;

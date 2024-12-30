@@ -13,6 +13,15 @@ const fetchLikes = async () => {
     console.error("리뷰 데이터를 가져오는 중 오류 발생:", error);
   }
 };
+const handleCancelClick = (likeId) => {
+  // JavaScript 기본 confirm 대화상자 표시
+  const isConfirmed = confirm("정말로 좋아요 항목에서 삭제할까요?");
+  if (isConfirmed) {
+    alert("삭제되었습니다."); // 확인 시 동작
+    // 실제 취소 로직을 여기에 추가 가능
+    // 예: API 호출 후 목록 갱신
+  }
+};
 onMounted(fetchLikes);
 </script>
 
@@ -32,7 +41,7 @@ onMounted(fetchLikes);
     </td>
     <td class="likeStore_buttons">
       <button>예약하기</button>
-      <button class="delete">삭제하기</button>
+      <button class="delete" @click="handleCancelClick(like.id)">삭제하기</button>
     </td>
   </tr>
 </template>
@@ -85,7 +94,6 @@ onMounted(fetchLikes);
 tr,
 td {
   border-top: 0.0625rem solid #cecece;
-  border-bottom: 0.0625rem solid #cecece;
   padding: 1.875rem;
   text-align: center;
   vertical-align: middle;

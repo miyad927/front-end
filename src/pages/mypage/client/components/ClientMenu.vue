@@ -22,7 +22,7 @@
         <li>
           상품
           <ul class="eachList">
-            <router-link to="/mypage/client/product_info"><li>- 상품 주문 내역</li></router-link>
+            <router-link to="/mypage/client/orders"><li>- 상품 주문 내역</li></router-link>
             <router-link to="/mypage/client/product_review"><li>- 상품 배송 리뷰</li></router-link>
           </ul>
         </li>

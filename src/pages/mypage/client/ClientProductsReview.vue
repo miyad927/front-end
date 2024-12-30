@@ -1,7 +1,7 @@
 <script setup>
 import { onMounted } from "vue";
-import ClientAReviews from "./components/ClientAReviews.vue";
-import ClientBReviews from "./components/ClientBReviews.vue";
+import ClientPAReviews from "./components/ClientPAReviews.vue";
+import ClientPBReviews from "./components/ClientPBReviews.vue";
 
 onMounted(() => {
   document.querySelectorAll(".tab_button").forEach((button) => {
@@ -26,6 +26,7 @@ onMounted(() => {
 
 <template>
   <div class="myProduct_Review">
+    <div class="product_header">상품 리뷰</div>
     <div class="my_reviewTab">
       <button class="tab_button active" data-tab="tab1">작성가능한 리뷰</button>
       <button class="tab_button" data-tab="tab2">내가 작성한 리뷰</button>
@@ -33,20 +34,12 @@ onMounted(() => {
     <div class="my_reviewTabContent">
       <div id="tab1" class="tab_content active">
         <div class="review_contents">
-          <ClientBReviews></ClientBReviews>
-          <ClientBReviews></ClientBReviews>
-          <ClientBReviews></ClientBReviews>
-          <ClientBReviews></ClientBReviews>
-          <ClientBReviews></ClientBReviews>
+          <ClientPBReviews></ClientPBReviews>
         </div>
       </div>
       <div id="tab2" class="tab_content">
         <div class="review_contents">
-          <ClientAReviews></ClientAReviews>
-          <ClientAReviews></ClientAReviews>
-          <ClientAReviews></ClientAReviews>
-          <ClientAReviews></ClientAReviews>
-          <ClientAReviews></ClientAReviews>
+          <ClientPAReviews></ClientPAReviews>
         </div>
       </div>
     </div>
@@ -54,16 +47,26 @@ onMounted(() => {
 </template>
 
 <style scoped>
-.myProduct_Review {
-  padding-left: 1.125rem;
+.product_header {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1.25rem;
 }
 .my_reviewTab {
   display: flex;
   gap: 1.875rem;
+  border-bottom: 1px solid #ccc;
 }
 .tab_button {
   font-size: 1.125rem;
-  padding: 1.125rem 1.125rem 1.125rem 0;
+  padding: 0.625rem 0.1875rem;
+  font-weight: normal; /* 기본 상태에서 글자 굵기 */
+  cursor: pointer;
+}
+.tab_button.active {
+  font-weight: bold; /* 활성화된 상태에서 글자 굵기 */
+  color: black;
+  border-bottom: 2px solid black;
 }
 .tab_content {
   display: none;
@@ -72,7 +75,9 @@ onMounted(() => {
 .tab_content.active {
   display: block;
 }
-.review_contents .review_item:first-child {
-  border-top: 0.0625rem solid #ddd;
+.my_reviewTabContent {
+  border-radius: 1rem;
+  border: 1px solid #ccc;
+  margin: 1rem 0;
 }
 </style>
